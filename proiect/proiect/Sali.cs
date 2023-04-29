@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace proiect
+{
+    public class Sali
+    {
+        protected int _idRestaurant; //id-ul restaurantului (este foreign key)
+        protected int _idSala; //numarul de ordine al salii
+        protected int _mese; //numarul de mese din sala cu _idSali
+        protected string _facilitati; // optiunile pentru sala (ex. pentru nunta, masa afara etc.)
+    }
+}
