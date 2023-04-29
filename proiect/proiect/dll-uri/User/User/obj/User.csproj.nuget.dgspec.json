@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\Administrator\\Administrator\\Administrator.csproj": {}
+    "C:\\Users\\User\\source\\repos\\User\\User\\User.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\Administrator\\Administrator\\Administrator.csproj": {
+    "C:\\Users\\User\\source\\repos\\User\\User\\User.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Administrator\\Administrator\\Administrator.csproj",
-        "projectName": "Administrator",
-        "projectPath": "C:\\Users\\User\\source\\repos\\Administrator\\Administrator\\Administrator.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\User\\User\\User.csproj",
+        "projectName": "User",
+        "projectPath": "C:\\Users\\User\\source\\repos\\User\\User\\User.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\Administrator\\Administrator\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\User\\User\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

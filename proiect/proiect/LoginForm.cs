@@ -12,6 +12,7 @@ namespace proiect
 {
     public partial class LoginForm : Form
     {
+        Oras.Oras _oras;
         public LoginForm()
         {
             InitializeComponent();
