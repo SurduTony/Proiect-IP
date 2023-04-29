@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "T0Dho905avt9DNcYydkrDU4s1Re02M9tkM+t5o00AjFaLL8tJtZbwW8TEQl04vJ6ztkhMYO4i6ndkMa5ZQaqtg==",
+  "success": true,
+  "projectFilePath": "D:\\git repositories\\Proiect_IP\\proiect\\proiect\\proiect.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.15\\microsoft.windowsdesktop.app.ref.6.0.15.nupkg.sha512",
+    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.15\\microsoft.netcore.app.ref.6.0.15.nupkg.sha512",
+    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.15\\microsoft.aspnetcore.app.ref.6.0.15.nupkg.sha512",
+    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.15\\microsoft.netcore.app.host.win-x64.6.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

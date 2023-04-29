@@ -1,0 +1,17 @@
+D:\git repositories\Proiect_IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.exe
+D:\git repositories\Proiect_IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.deps.json
+D:\git repositories\Proiect_IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.runtimeconfig.json
+D:\git repositories\Proiect_IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
+D:\git repositories\Proiect_IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.AssemblyReference.cache
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.Form1.resources
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.GenerateResource.cache
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.GeneratedMSBuildEditorConfig.editorconfig
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfoInputs.cache
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfo.cs
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CoreCompileInputs.cache
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.dll
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect.dll
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
+D:\git repositories\Proiect_IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll
