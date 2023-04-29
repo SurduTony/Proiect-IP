@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T0Dho905avt9DNcYydkrDU4s1Re02M9tkM+t5o00AjFaLL8tJtZbwW8TEQl04vJ6ztkhMYO4i6ndkMa5ZQaqtg==",
+  "dgSpecHash": "PCJcxB/kryivksc4cKvYnvIczXWpE3SgDP7wW3k3r5r4/Cfu3vQn5lAAs/mLtjYErVSiDAz9lHBMz6Kz4wuUyQ==",
   "success": true,
-  "projectFilePath": "D:\\git repositories\\Proiect_IP\\proiect\\proiect\\proiect.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.15\\microsoft.windowsdesktop.app.ref.6.0.15.nupkg.sha512",
-    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.15\\microsoft.netcore.app.ref.6.0.15.nupkg.sha512",
-    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.15\\microsoft.aspnetcore.app.ref.6.0.15.nupkg.sha512",
-    "C:\\Users\\Surdu Tony\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.15\\microsoft.netcore.app.host.win-x64.6.0.15.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
