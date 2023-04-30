@@ -17,7 +17,6 @@ namespace proiect
         public LoginForm()
         {
             userManager = new UserManager();
-
             InitializeComponent();
         }
 
@@ -32,11 +31,22 @@ namespace proiect
                 // schimba in form-ul cu optiuni
                 OptionsForm optionsForm = new OptionsForm();
                 optionsForm.Show();
-                this.Close();
+                this.Hide();
             }
             else
             {
                 MessageBox.Show("datele sunt gresite");
+            }
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form? form = MainForm.caretaker?.Undo();
+            if (form != null)
+            {
+                form.Show();
+                Dispose();
+                this.Close();
             }
         }
     }

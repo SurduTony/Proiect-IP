@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace proiect
 {
     public partial class MainForm : Form
     {
-        
+        public static Caretaker? caretaker;
+        bool closingPending = false;
+
         public MainForm()
         {
+            
             InitializeComponent();
         }
 
@@ -23,21 +27,43 @@ namespace proiect
         {
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
-            this.Close();
+            caretaker = new Caretaker(this);
+            caretaker.Save();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SearchForm searchForm = new SearchForm();
             searchForm.Show();
-            this.Close();
+            caretaker = new Caretaker(this);
+            caretaker.Save();
+            this.Hide();
         }
 
         private void buttonAccount_Click(object sender, EventArgs e)
         {
             UserOptionsForm userOptions = new UserOptionsForm();
             userOptions.Show();
-            this.Close();
+            caretaker = new Caretaker(this);
+            caretaker.Save();
+            this.Hide();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

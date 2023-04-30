@@ -21,7 +21,23 @@ namespace proiect
         {
             AddAccountForm addAccount = new AddAccountForm();
             addAccount.Show();
-            this.Close();
+            if (MainForm.caretaker != null)
+            {
+                MainForm.caretaker.form = this;
+                MainForm.caretaker.Save();
+            }
+            this.Hide();
+        }
+
+        private void UserOptionsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form? form = MainForm.caretaker?.Undo();
+            if (form != null)
+            {
+                form.Show();
+                Dispose();
+                this.Close();
+            }
         }
     }
 }

@@ -96,6 +96,7 @@
             this.Controls.Add(this.groupBoxSearch);
             this.Name = "SearchForm";
             this.Text = "SearchForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchForm_FormClosing);
             this.Load += new System.EventHandler(this.SearchForm_Load);
             this.groupBoxSearch.ResumeLayout(false);
             this.groupBoxSearch.PerformLayout();

@@ -13,7 +13,7 @@ namespace proiect
 {
     public partial class SearchForm : Form
     {
-        SqlConnection conn; 
+        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
 
         public SearchForm()
         {
@@ -22,7 +22,6 @@ namespace proiect
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "select * from Oras";
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -36,13 +35,26 @@ namespace proiect
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select r.Nume, r.Adresa, o.Nume as Oras from Restaurant r, Oras o where (o.IdOras = r.IdOras and o.Nume LIKE ('%" + comboBox1.Text + "%'))";
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            dataGridView1.DataSource = dt1;
+            
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "select r.Nume, r.Adresa, o.Nume as Oras from Restaurant r, Oras o where (o.IdOras = r.IdOras and o.Nume LIKE ('%" + comboBox1.Text + "%'))";
+                SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+                DataTable dt1 = new DataTable();
+                da1.Fill(dt1);
+                dataGridView1.DataSource = dt1;
+            
 
+        }
+
+        private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form? form = MainForm.caretaker?.Undo();
+            if (form != null)
+            {
+                form.Show();
+                Dispose();
+                this.Close();
+            }
         }
     }
 }

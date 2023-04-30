@@ -1,3 +1,5 @@
+//Flaminzanu-Mateiuc Marian
+
 using System.Data.SqlClient;
 
 namespace proiect
@@ -32,6 +34,27 @@ namespace proiect
                 {
                     MessageBox.Show("Could not create account! Reason: " + ex.Message);
                 }
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Form? form = MainForm.caretaker?.Undo();
+            if (form != null)
+            {
+                form.Show();
+                this.Close();
+            }
+        }
+
+        private void AddAccountForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form? form = MainForm.caretaker?.Undo();
+            if (form != null)
+            {
+                form.Show();
+                this.Dispose();
+                this.Close();
             }
         }
     }

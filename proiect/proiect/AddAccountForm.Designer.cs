@@ -35,12 +35,16 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxConfirm = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(103, 20);
+            this.labelName.Location = new System.Drawing.Point(87, 42);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(52, 20);
             this.labelName.TabIndex = 0;
@@ -49,7 +53,7 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(82, 82);
+            this.labelPassword.Location = new System.Drawing.Point(66, 104);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(73, 20);
             this.labelPassword.TabIndex = 1;
@@ -58,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 154);
+            this.label2.Location = new System.Drawing.Point(7, 176);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 20);
             this.label2.TabIndex = 2;
@@ -66,7 +70,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(237, 483);
+            this.buttonAdd.Location = new System.Drawing.Point(145, 209);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(94, 29);
             this.buttonAdd.TabIndex = 3;
@@ -76,14 +80,14 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(161, 17);
+            this.textBoxName.Location = new System.Drawing.Point(145, 39);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(291, 27);
             this.textBoxName.TabIndex = 4;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(161, 82);
+            this.textBoxPassword.Location = new System.Drawing.Point(145, 104);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(291, 27);
             this.textBoxPassword.TabIndex = 5;
@@ -91,28 +95,63 @@
             // 
             // textBoxConfirm
             // 
-            this.textBoxConfirm.Location = new System.Drawing.Point(161, 154);
+            this.textBoxConfirm.Location = new System.Drawing.Point(145, 176);
             this.textBoxConfirm.Name = "textBoxConfirm";
             this.textBoxConfirm.Size = new System.Drawing.Size(291, 27);
             this.textBoxConfirm.TabIndex = 6;
             this.textBoxConfirm.UseSystemPasswordChar = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonCancel);
+            this.groupBox1.Controls.Add(this.textBoxName);
+            this.groupBox1.Controls.Add(this.buttonAdd);
+            this.groupBox1.Controls.Add(this.textBoxConfirm);
+            this.groupBox1.Controls.Add(this.labelName);
+            this.groupBox1.Controls.Add(this.textBoxPassword);
+            this.groupBox1.Controls.Add(this.labelPassword);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(627, 272);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(342, 209);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(94, 29);
+            this.buttonCancel.TabIndex = 7;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 272);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(627, 317);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
             // 
             // AddAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 589);
-            this.Controls.Add(this.textBoxConfirm);
-            this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.labelName);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "AddAccountForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddAccountForm_FormClosing);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -125,5 +164,8 @@
         private TextBox textBoxName;
         private TextBox textBoxPassword;
         private TextBox textBoxConfirm;
+        private GroupBox groupBox1;
+        private Button buttonCancel;
+        private GroupBox groupBox2;
     }
 }
