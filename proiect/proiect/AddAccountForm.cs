@@ -4,9 +4,9 @@ namespace proiect
 {
     public partial class AddAccountForm : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\Proiect IP\Proiect-IP\proiect\proiect\restaurants.mdf;Integrated Security = True");
+       SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
 
-    
+
         public AddAccountForm()
         {
             InitializeComponent();

@@ -13,7 +13,7 @@ namespace proiect
 {
     public partial class SearchForm : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\Proiect IP\Proiect-IP\proiect\proiect\restaurants.mdf;Integrated Security = True");
+        SqlConnection conn; 
 
         public SearchForm()
         {
@@ -22,6 +22,7 @@ namespace proiect
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
+            conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "select * from Oras";
             SqlDataAdapter da = new SqlDataAdapter(cmd);
