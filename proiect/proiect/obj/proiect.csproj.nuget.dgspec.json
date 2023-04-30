@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {}
+    "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {}
   },
   "projects": {
-    "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
+    "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+        "projectUniqueName": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
         "projectName": "proiect",
-        "projectPath": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Proiect-IP\\proiect\\proiect\\obj\\",
+        "projectPath": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+        "packagesPath": "C:\\Users\\Marian\\.nuget\\packages\\",
+        "outputPath": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Marian\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -39,14 +39,35 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "Microsoft.Data.SqlClient.SNI.runtime": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            },
+            "runtime.native.System.Data.SqlClient.sni": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -58,7 +79,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

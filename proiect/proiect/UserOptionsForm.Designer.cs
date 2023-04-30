@@ -28,51 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            buttonAdd = new Button();
-            buttonModify = new Button();
-            SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonModify = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(318, 43);
-            label1.Name = "label1";
-            label1.Size = new Size(132, 46);
-            label1.TabIndex = 0;
-            label1.Text = "Optiuni";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(318, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 46);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Options";
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(129, 248);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(178, 59);
-            buttonAdd.TabIndex = 1;
-            buttonAdd.Text = "adaugare";
-            buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Location = new System.Drawing.Point(129, 248);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(178, 59);
+            this.buttonAdd.TabIndex = 1;
+            this.buttonAdd.Text = "Add account";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonModify
             // 
-            buttonModify.Location = new Point(472, 248);
-            buttonModify.Name = "buttonModify";
-            buttonModify.Size = new Size(178, 59);
-            buttonModify.TabIndex = 2;
-            buttonModify.Text = "modificare";
-            buttonModify.UseVisualStyleBackColor = true;
+            this.buttonModify.Location = new System.Drawing.Point(472, 248);
+            this.buttonModify.Name = "buttonModify";
+            this.buttonModify.Size = new System.Drawing.Size(178, 59);
+            this.buttonModify.TabIndex = 2;
+            this.buttonModify.Text = "Modify ";
+            this.buttonModify.UseVisualStyleBackColor = true;
             // 
             // UserOptionsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(buttonModify);
-            Controls.Add(buttonAdd);
-            Controls.Add(label1);
-            Name = "UserOptionsForm";
-            Text = "UserOptionsForm";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonModify);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.label1);
+            this.Name = "UserOptionsForm";
+            this.Text = "UserOptionsForm";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

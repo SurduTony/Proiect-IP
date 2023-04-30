@@ -16,5 +16,12 @@ namespace proiect
         {
             InitializeComponent();
         }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddAccountForm addAccount = new AddAccountForm();
+            addAccount.Show();
+            this.Close();
+        }
     }
 }
