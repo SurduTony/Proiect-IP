@@ -15,7 +15,7 @@ namespace proiect
     public partial class MainForm : Form
     {
         public static Caretaker? caretaker;
-        bool closingPending = false;
+        public static UserManager userManager = new UserManager();
 
         public MainForm()
         {
@@ -62,6 +62,30 @@ namespace proiect
                 else
                 {
                     Application.Exit();
+                }
+            }
+        }
+
+        
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (this.Visible == true)
+            {
+                if (userManager.CurrentUser != null)
+                {
+                    labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
+                }
+            }
+        }
+
+        private void MainForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if(this.Visible == true)
+            {
+                if (userManager.CurrentUser != null)
+                {
+                    labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
                 }
             }
         }

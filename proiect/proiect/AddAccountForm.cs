@@ -6,7 +6,7 @@ namespace proiect
 {
     public partial class AddAccountForm : Form
     {
-       SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
+        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + Directory.GetCurrentDirectory() + "\\restaurants.mdf;" + "Integrated Security = True");
 
 
         public AddAccountForm()
@@ -16,7 +16,7 @@ namespace proiect
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text.Equals(textBoxPassword.Text))
+            if (MainForm.userManager.userExists(textBoxName.Text, textBoxPassword.Text) == false)
             {
                 try
                 {
@@ -24,16 +24,29 @@ namespace proiect
                         conn.Close();
                     conn.Open();
                     SqlCommand cmd1 = conn.CreateCommand();
+
                     cmd1.CommandText = "insert into Administrator(Nume,Parola) values (@Nume,@Parola)";
-                    cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text);
-                    cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text);
+                    cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
+                    cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text.Trim());
                     cmd1.ExecuteNonQuery();
                     MessageBox.Show("Account created succesfully!");
+                    groupBox2.Visible = true;
+                    MainForm.userManager.CurrentUser = new User(textBoxName.Text, textBoxPassword.Text);
+                    MainForm.userManager.resetUserList();
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Could not create account! Reason: " + ex.Message);
                 }
+            }
+            else
+            {
+                MessageBox.Show("This user already exists. Try another username or password.");
+                textBoxPassword.Text = "";
+                textBoxName.Text = "";
+                textBoxConfirm.Text = "";
+
             }
         }
 

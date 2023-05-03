@@ -31,6 +31,7 @@
             this.buttonLogIn = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonAccount = new System.Windows.Forms.Button();
+            this.labelUser = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonLogIn
@@ -63,18 +64,31 @@
             this.buttonAccount.UseVisualStyleBackColor = true;
             this.buttonAccount.Click += new System.EventHandler(this.buttonAccount_Click);
             // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Location = new System.Drawing.Point(12, 9);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(472, 20);
+            this.labelUser.TabIndex = 6;
+            this.labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelUser);
             this.Controls.Add(this.buttonAccount);
             this.Controls.Add(this.buttonLogIn);
             this.Controls.Add(this.buttonSearch);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -83,5 +97,6 @@
         private Button buttonLogIn;
         private Button buttonSearch;
         private Button buttonAccount;
+        private Label labelUser;
     }
 }

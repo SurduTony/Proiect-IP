@@ -19,7 +19,7 @@ namespace proiect
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            AddAccountForm addAccount = new AddAccountForm();
+            AddAccountForm addAccount = new();
             addAccount.Show();
             if (MainForm.caretaker != null)
             {
@@ -39,5 +39,7 @@ namespace proiect
                 this.Close();
             }
         }
+
+
     }
 }

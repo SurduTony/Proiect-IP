@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U+9Q/Y5G7EjJg9wb0UIbZd9LC6DoD25cFEt5Wj9Jp8O1271j0s3qCpFZBC8OPlx9mEbDfwBWKhgxn1ofiNbYMg==",
+  "dgSpecHash": "V3bGFCkm7Pgw6L7yOrnggvitpvVQ2JLSoPxVVFbWjR0wK3h24ru+gVlvN0Ww9fjan/SSAyHw5BhiMDQ/bw9zNg==",
   "success": true,
-  "projectFilePath": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+  "projectFilePath": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marian\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Marian\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

@@ -59,7 +59,7 @@
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(178, 59);
             this.buttonModify.TabIndex = 2;
-            this.buttonModify.Text = "Modify ";
+            this.buttonModify.Text = "Modify or add restaurant";
             this.buttonModify.UseVisualStyleBackColor = true;
             // 
             // UserOptionsForm

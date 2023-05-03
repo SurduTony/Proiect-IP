@@ -12,30 +12,36 @@ namespace proiect
 {
     public partial class LoginForm : Form
     {
-        UserManager userManager;
+        UserManager? userManager = MainForm.userManager;
 
         public LoginForm()
         {
-            userManager = new UserManager();
             InitializeComponent();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             // extrage date din textbox
-            string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
+            string username = textBoxUsername.Text.Trim();
+            string password = textBoxPassword.Text.Trim();
 
-            if (userManager.userExists(username, password))
+            if (userManager != null && userManager.userExists(username, password))
             {
-                // schimba in form-ul cu optiuni
-                OptionsForm optionsForm = new OptionsForm();
-                optionsForm.Show();
-                this.Hide();
+                if (MainForm.userManager.getUser(username, password) != null)
+                    MainForm.userManager.CurrentUser = MainForm.userManager.getUser(username, password);
+                Form? form = MainForm.caretaker?.Undo();
+                if (form != null)
+                {
+                    form.Show();
+                    Dispose();
+                    this.Close();
+                }
             }
             else
             {
-                MessageBox.Show("datele sunt gresite");
+                MessageBox.Show("The user doesn't exist. Please try again!");
+                textBoxPassword.Text = "";
+                textBoxUsername.Text = "";
             }
         }
 

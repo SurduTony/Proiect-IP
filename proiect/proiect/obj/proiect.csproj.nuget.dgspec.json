@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {}
+    "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {}
   },
   "projects": {
-    "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
+    "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+        "projectUniqueName": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
         "projectName": "proiect",
-        "projectPath": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+        "projectPath": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
         "packagesPath": "C:\\Users\\Marian\\.nuget\\packages\\",
-        "outputPath": "D:\\Proiect IP\\Proiect-IP\\proiect\\proiect\\obj\\",
+        "outputPath": "D:\\Proiect-IP\\proiect\\proiect\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Marian\\AppData\\Roaming\\NuGet\\NuGet.Config",
