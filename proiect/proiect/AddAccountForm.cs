@@ -70,5 +70,14 @@ namespace proiect
                 this.Close();
             }
         }
+
+        private void buttonRestaurant_Click(object sender, EventArgs e)
+        {
+            RestaurantsForm userOptions = new RestaurantsForm();
+            userOptions.Show();
+            MainForm.caretaker = new Caretaker(this);
+            MainForm.caretaker.Save();
+            this.Hide();
+        }
     }
 }

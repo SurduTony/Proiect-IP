@@ -29,6 +29,17 @@ namespace proiect
             this.Hide();
         }
 
+        private void buttonModify_Click(object sender, EventArgs e)
+        {
+            RestaurantsForm restaurantsForm = new RestaurantsForm();
+            restaurantsForm.Show();
+            if (MainForm.caretaker != null)
+            {
+                MainForm.caretaker.form = this;
+                MainForm.caretaker.Save();
+            }
+            this.Hide();
+        }
         private void UserOptionsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form? form = MainForm.caretaker?.Undo();
@@ -40,6 +51,6 @@ namespace proiect
             }
         }
 
-
+        
     }
 }

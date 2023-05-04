@@ -32,6 +32,7 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonAccount = new System.Windows.Forms.Button();
             this.labelUser = new System.Windows.Forms.Label();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonLogIn
@@ -73,11 +74,22 @@
             this.labelUser.TabIndex = 6;
             this.labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
             // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(83, 274);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(157, 55);
+            this.buttonLogOut.TabIndex = 7;
+            this.buttonLogOut.Text = "Log out";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.buttonAccount);
             this.Controls.Add(this.buttonLogIn);
@@ -98,5 +110,6 @@
         private Button buttonSearch;
         private Button buttonAccount;
         private Label labelUser;
+        private Button buttonLogOut;
     }
 }

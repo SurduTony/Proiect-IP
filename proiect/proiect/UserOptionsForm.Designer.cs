@@ -61,6 +61,7 @@
             this.buttonModify.TabIndex = 2;
             this.buttonModify.Text = "Modify or add restaurant";
             this.buttonModify.UseVisualStyleBackColor = true;
+            this.buttonModify.Click += new System.EventHandler(this.buttonModify_Click);
             // 
             // UserOptionsForm
             // 

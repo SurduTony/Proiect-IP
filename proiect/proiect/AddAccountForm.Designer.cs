@@ -38,8 +38,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonRestaurants = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -133,7 +133,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.buttonRestaurants);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 272);
@@ -143,6 +143,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Visible = false;
             // 
+            // buttonRestaurants
+            // 
+            this.buttonRestaurants.Location = new System.Drawing.Point(294, 19);
+            this.buttonRestaurants.Name = "buttonRestaurants";
+            this.buttonRestaurants.Size = new System.Drawing.Size(94, 29);
+            this.buttonRestaurants.TabIndex = 9;
+            this.buttonRestaurants.Text = "Click Here!";
+            this.buttonRestaurants.UseVisualStyleBackColor = true;
+            this.buttonRestaurants.Click += new System.EventHandler(this.buttonRestaurant_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -151,15 +161,6 @@
             this.label1.Size = new System.Drawing.Size(276, 20);
             this.label1.TabIndex = 8;
             this.label1.Text = "Want to add or modify your restaurants?";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(294, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Click Here!";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // AddAccountForm
             // 
@@ -191,7 +192,7 @@
         private GroupBox groupBox1;
         private Button buttonCancel;
         private GroupBox groupBox2;
-        private Button button1;
+        private Button buttonRestaurants;
         private Label label1;
     }
 }

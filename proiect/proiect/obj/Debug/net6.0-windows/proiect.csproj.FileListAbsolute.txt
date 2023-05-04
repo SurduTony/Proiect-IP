@@ -117,9 +117,8 @@ D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-x86\native\s
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.g.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AddAccountForm.resources
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.OptionsForm.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.SearchForm.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.UserOptionsForm.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComplete
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.RestaurantsForm.resources
