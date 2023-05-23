@@ -37,7 +37,7 @@ namespace proiect
         {
             
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select r.Nume, r.Adresa, o.Nume as Oras from Restaurant r, Oras o where (o.IdOras = r.IdOras and o.Nume LIKE ('%" + comboBox1.Text + "%'))";
+                cmd.CommandText = "select r.Nume as \"Restaurant Name\", r.Adresa as \"Restaurant Address\", r.Meniu as  from Restaurant r, Oras o where (o.IdOras = r.IdOras and o.Nume LIKE ('%" + comboBox1.Text + "%'))";
                 SqlDataAdapter da1 = new SqlDataAdapter(cmd);
                 DataTable dt1 = new DataTable();
                 da1.Fill(dt1);

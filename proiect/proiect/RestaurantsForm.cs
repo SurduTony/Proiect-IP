@@ -13,14 +13,16 @@ namespace proiect
 {
     public partial class RestaurantsForm : Form
     {
+        public static int restaurantID = -1;
         public enum Modes {NEW_RESTAURANT,MODIFY };
         public int mode = 0;
         public static int idOras;
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + Directory.GetCurrentDirectory() + "\\restaurants.mdf;" + "Integrated Security = True");
-
+        public static DataTable dt1 = new DataTable();
         public RestaurantsForm()
         {
             InitializeComponent();
+
         }
 
         private void RestaurantsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,11 +60,11 @@ namespace proiect
 
 
                     cmd = conn.CreateCommand();
-                    cmd.CommandText = "SELECT r.Nume AS restaurant_nume, r.Adresa AS restaurant_adresa, o.Nume AS oras_nume FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+                    cmd.CommandText = "SELECT r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", o.Nume AS \"City\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
                     SqlDataAdapter da1 = new SqlDataAdapter(cmd);
                     DataTable dt1 = new DataTable();
                     da1.Fill(dt1);
-                    dataGridView.DataSource = dt1;
+                    dataGridViewRestaurants.DataSource = dt1;
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
@@ -126,12 +128,75 @@ namespace proiect
 
         private void RestaurantsForm_Shown(object sender, EventArgs e)
         {
+            groupBoxTables.Enabled = false;
+            dataGridViewRooms.Enabled = false;
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT r.Nume AS restaurant_nume, r.Adresa AS restaurant_adresa, o.Nume AS oras_nume FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+            cmd.CommandText = "SELECT s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
             SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            DataTable dt1 = new DataTable();
+            dt1 = new DataTable();
             da1.Fill(dt1);
-            dataGridView.DataSource = dt1;
+            dataGridViewRooms.DataSource = dt1;
+
+
+            cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", o.Nume AS City FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+            da1 = new SqlDataAdapter(cmd);
+            dt1 = new DataTable();
+            da1.Fill(dt1);
+            dataGridViewRestaurants.DataSource = dt1;
+            dataGridViewRestaurants.Columns[0].Visible = false;
+
+        }
+
+
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+            groupBoxTables.Visible = true;
+            
+            if(e.RowIndex>= 0 && e.ColumnIndex >= 0 && e.RowIndex < dt1.Rows.Count)
+
+            {
+                try
+                {
+                    int.TryParse(dataGridViewRestaurants.Rows[e.RowIndex].Cells[0].Value.ToString(), out restaurantID);
+                    SqlCommand cmd = conn.CreateCommand();
+                    cmd.CommandText = "SELECT s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
+                    SqlDataAdapter da2 = new SqlDataAdapter(cmd);
+                    DataTable dt2 = new DataTable();
+                    da2.Fill(dt2);
+                    dataGridViewRooms.DataSource = dt2;
+                    groupBoxTables.Enabled = true;
+                    dataGridViewRooms.Enabled = true;
+                }catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+        }
+
+        private void buttonNewRoom_Click(object sender, EventArgs e)
+        {
+            textBoxFacilities.Text = "";
+            textBoxTables.Text = "";
+        }
+
+        private void buttonAddRoom_Click(object sender, EventArgs e)
+        {
+            int.TryParse(textBoxTables.Text, out int tablesCount);
+            if (tablesCount > 0)
+            {
+                try
+                {
+                    string facilities = textBoxFacilities.Text.Trim();
+                    SqlCommand cmd1 = conn.CreateCommand();
+                    cmd1 = conn.CreateCommand();
+                    cmd1.CommandText = "insert into Sala(IdRestaurant,Mese,Facilitati) values (@IdRestaurant,@Mese,@Facilitati)";
+                    cmd1.Parameters.AddWithValue("@IdRestaurant", restaurantID);
+                    cmd1.Parameters.AddWithValue("@Mese", tablesCount);
+                    cmd1.Parameters.AddWithValue("@Facilitati", facilities);
+                    cmd1.ExecuteNonQuery();
+                    RestaurantsForm_Shown(sender, EventArgs.Empty);
+                    MessageBox.Show("Room added succesfully!");
+                }catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
         }
     }
 }

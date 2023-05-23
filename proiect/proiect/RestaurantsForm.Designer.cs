@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewRestaurants = new System.Windows.Forms.DataGridView();
             this.labelName = new System.Windows.Forms.Label();
             this.labelAddress = new System.Windows.Forms.Label();
             this.labelCity = new System.Windows.Forms.Label();
@@ -41,21 +41,33 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxRestaurant = new System.Windows.Forms.GroupBox();
             this.groupBoxTables = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.textBoxFacilities = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelTables = new System.Windows.Forms.Label();
+            this.textBoxTables = new System.Windows.Forms.TextBox();
+            this.buttonAddRoom = new System.Windows.Forms.Button();
+            this.buttonNewRoom = new System.Windows.Forms.Button();
+            this.dataGridViewRooms = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).BeginInit();
             this.groupBoxRestaurant.SuspendLayout();
+            this.groupBoxTables.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRooms)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView
+            // dataGridViewRestaurants
             // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(3, 328);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.RowHeadersWidth = 51;
-            this.dataGridView.RowTemplate.Height = 29;
-            this.dataGridView.Size = new System.Drawing.Size(653, 407);
-            this.dataGridView.TabIndex = 0;
+            this.dataGridViewRestaurants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewRestaurants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridViewRestaurants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRestaurants.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewRestaurants.Location = new System.Drawing.Point(3, 328);
+            this.dataGridViewRestaurants.Name = "dataGridViewRestaurants";
+            this.dataGridViewRestaurants.ReadOnly = true;
+            this.dataGridViewRestaurants.RowHeadersWidth = 51;
+            this.dataGridViewRestaurants.RowTemplate.Height = 29;
+            this.dataGridViewRestaurants.Size = new System.Drawing.Size(653, 407);
+            this.dataGridViewRestaurants.TabIndex = 0;
+            this.dataGridViewRestaurants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // labelName
             // 
@@ -149,7 +161,7 @@
             // 
             // groupBoxRestaurant
             // 
-            this.groupBoxRestaurant.Controls.Add(this.dataGridView);
+            this.groupBoxRestaurant.Controls.Add(this.dataGridViewRestaurants);
             this.groupBoxRestaurant.Controls.Add(this.buttonSave);
             this.groupBoxRestaurant.Controls.Add(this.labelName);
             this.groupBoxRestaurant.Controls.Add(this.buttonNewRestaurant);
@@ -169,12 +181,84 @@
             // 
             // groupBoxTables
             // 
+            this.groupBoxTables.Controls.Add(this.textBoxFacilities);
+            this.groupBoxTables.Controls.Add(this.label2);
+            this.groupBoxTables.Controls.Add(this.labelTables);
+            this.groupBoxTables.Controls.Add(this.textBoxTables);
+            this.groupBoxTables.Controls.Add(this.buttonAddRoom);
+            this.groupBoxTables.Controls.Add(this.buttonNewRoom);
+            this.groupBoxTables.Controls.Add(this.dataGridViewRooms);
             this.groupBoxTables.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxTables.Location = new System.Drawing.Point(659, 0);
             this.groupBoxTables.Name = "groupBoxTables";
             this.groupBoxTables.Size = new System.Drawing.Size(601, 738);
             this.groupBoxTables.TabIndex = 12;
             this.groupBoxTables.TabStop = false;
+            // 
+            // textBoxFacilities
+            // 
+            this.textBoxFacilities.Location = new System.Drawing.Point(88, 77);
+            this.textBoxFacilities.Multiline = true;
+            this.textBoxFacilities.Name = "textBoxFacilities";
+            this.textBoxFacilities.Size = new System.Drawing.Size(331, 174);
+            this.textBoxFacilities.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Facilities:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelTables
+            // 
+            this.labelTables.AutoSize = true;
+            this.labelTables.Location = new System.Drawing.Point(15, 42);
+            this.labelTables.Name = "labelTables";
+            this.labelTables.Size = new System.Drawing.Size(53, 20);
+            this.labelTables.TabIndex = 13;
+            this.labelTables.Text = "Tables:";
+            this.labelTables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxTables
+            // 
+            this.textBoxTables.Location = new System.Drawing.Point(88, 39);
+            this.textBoxTables.Name = "textBoxTables";
+            this.textBoxTables.Size = new System.Drawing.Size(86, 27);
+            this.textBoxTables.TabIndex = 14;
+            // 
+            // buttonAddRoom
+            // 
+            this.buttonAddRoom.Location = new System.Drawing.Point(450, 253);
+            this.buttonAddRoom.Name = "buttonAddRoom";
+            this.buttonAddRoom.Size = new System.Drawing.Size(141, 51);
+            this.buttonAddRoom.TabIndex = 12;
+            this.buttonAddRoom.Text = "Add Room";
+            this.buttonAddRoom.UseVisualStyleBackColor = true;
+            this.buttonAddRoom.Click += new System.EventHandler(this.buttonAddRoom_Click);
+            // 
+            // buttonNewRoom
+            // 
+            this.buttonNewRoom.Location = new System.Drawing.Point(448, 55);
+            this.buttonNewRoom.Name = "buttonNewRoom";
+            this.buttonNewRoom.Size = new System.Drawing.Size(141, 51);
+            this.buttonNewRoom.TabIndex = 11;
+            this.buttonNewRoom.Text = "New Room";
+            this.buttonNewRoom.UseVisualStyleBackColor = true;
+            this.buttonNewRoom.Click += new System.EventHandler(this.buttonNewRoom_Click);
+            // 
+            // dataGridViewRooms
+            // 
+            this.dataGridViewRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRooms.Location = new System.Drawing.Point(3, 328);
+            this.dataGridViewRooms.Name = "dataGridViewRooms";
+            this.dataGridViewRooms.RowHeadersWidth = 51;
+            this.dataGridViewRooms.RowTemplate.Height = 29;
+            this.dataGridViewRooms.Size = new System.Drawing.Size(595, 407);
+            this.dataGridViewRooms.TabIndex = 0;
             // 
             // RestaurantsForm
             // 
@@ -188,16 +272,19 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RestaurantsForm_FormClosing);
             this.Load += new System.EventHandler(this.RestaurantsForm_Load);
             this.Shown += new System.EventHandler(this.RestaurantsForm_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).EndInit();
             this.groupBoxRestaurant.ResumeLayout(false);
             this.groupBoxRestaurant.PerformLayout();
+            this.groupBoxTables.ResumeLayout(false);
+            this.groupBoxTables.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRooms)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DataGridView dataGridView;
+        private DataGridView dataGridViewRestaurants;
         private Label labelName;
         private Label labelAddress;
         private Label labelCity;
@@ -210,5 +297,12 @@
         private Button buttonSave;
         private GroupBox groupBoxRestaurant;
         private GroupBox groupBoxTables;
+        private DataGridView dataGridViewRooms;
+        private TextBox textBoxFacilities;
+        private Label label2;
+        private Label labelTables;
+        private TextBox textBoxTables;
+        private Button buttonAddRoom;
+        private Button buttonNewRoom;
     }
 }
