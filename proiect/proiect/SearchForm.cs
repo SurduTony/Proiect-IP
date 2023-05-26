@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 
 namespace proiect
 {
+    //Sacrieriu Razvan-Marcian
     public partial class SearchForm : Form
     {
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
@@ -56,5 +57,12 @@ namespace proiect
                 this.Close();
             }
         }
+
+        private void buttonBook_Click(object sender, EventArgs e)
+        {
+        }
+
+        //TODO: Fa sa apara si telefonul in tabel (modifica query ul)
+        //Cautare dupa meniu sau nume (sa gasesti un cuvant in baza de date, gen Pizza in 'Peste, Paste, Pizza, Prajituri' )
     }
 }

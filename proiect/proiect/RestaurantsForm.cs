@@ -9,13 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Flaminzanu-Mateiuc Marian
+
 namespace proiect
 {
     public partial class RestaurantsForm : Form
     {
         public static int restaurantID = -1;
-        public enum Modes {NEW_RESTAURANT,MODIFY };
-        public int mode = 0;
+        public enum Modes { NEW_RESTAURANT, MODIFY };
+        public int modeRestaurant = 0;
+        public int modeRoom = 0;
         public static int idOras;
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + Directory.GetCurrentDirectory() + "\\restaurants.mdf;" + "Integrated Security = True");
         public static DataTable dt1 = new DataTable();
@@ -43,11 +46,11 @@ namespace proiect
                 try
                 {
                     //incarcare lista orase
-                    if(conn.State == ConnectionState.Open)
+                    if (conn.State == ConnectionState.Open)
                         conn.Close();
                     conn.Open();
 
-
+                    buttonNewRestaurant.BackColor = Color.LawnGreen;
                     SqlCommand cmd = conn.CreateCommand();
                     cmd.CommandText = "select * from Oras";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -60,7 +63,7 @@ namespace proiect
 
 
                     cmd = conn.CreateCommand();
-                    cmd.CommandText = "SELECT r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", o.Nume AS \"City\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+                    cmd.CommandText = "SELECT r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\",r.Meniu, o.Nume AS \"City\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
                     SqlDataAdapter da1 = new SqlDataAdapter(cmd);
                     DataTable dt1 = new DataTable();
                     da1.Fill(dt1);
@@ -83,16 +86,18 @@ namespace proiect
 
         private void buttonNewRestaurant_Click(object sender, EventArgs e)
         {
-            mode = (int)Modes.NEW_RESTAURANT;
+            modeRestaurant = (int)Modes.NEW_RESTAURANT;
             textBoxAddress.Text = "";
             textBoxMenu.Text = "";
             textBoxName.Text = "";
             comboBoxCity.Text = "";
+            buttonNewRestaurant.BackColor = Color.LawnGreen;
+            buttonModifyRestaurant.BackColor = SystemColors.Control;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if(mode == (int)Modes.NEW_RESTAURANT)
+            if (modeRestaurant == (int)Modes.NEW_RESTAURANT)
             {
                 try
                 {
@@ -122,7 +127,36 @@ namespace proiect
                     cmd1.ExecuteNonQuery();
                     RestaurantsForm_Shown(sender, EventArgs.Empty);
                     MessageBox.Show("Restaurant added succesfully!");
-                }catch (Exception ex) { MessageBox.Show(ex.Message); }
+                } catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            else
+            {
+                try
+                {
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select IdOras from Oras where nume like ('%" + comboBoxCity.Text.Trim() + "%')", conn);
+                    idOras = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + textBoxName.Text.Trim() + "%') and adresa like ('%" + textBoxAddress.Text.Trim() + "%') and IdOras like ('%" + idOras + "%')", conn);
+                    int idRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    SqlCommand cmd1 = conn.CreateCommand();
+                    cmd1.CommandText = "UPDATE Restaurant SET Nume = @Nume, Adresa = @Adresa, IdOras = @IdOras, Meniu = @Meniu WHERE IdRestaurant = @IdRestaurant";
+                    cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
+                    cmd1.Parameters.AddWithValue("@Adresa", textBoxAddress.Text.Trim());
+                    cmd1.Parameters.AddWithValue("@IdOras", idOras);
+                    cmd1.Parameters.AddWithValue("@Meniu", textBoxMenu.Text.Trim());
+                    cmd1.Parameters.AddWithValue("@IdRestaurant", idRestaurant);
+                    RestaurantsForm_Shown(sender, EventArgs.Empty);
+                    cmd1.ExecuteNonQuery();
+
+
+                    RestaurantsForm_Shown(sender, EventArgs.Empty);
+                    MessageBox.Show("Restaurant modified succesfully!");
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
 
@@ -138,7 +172,7 @@ namespace proiect
             dataGridViewRooms.DataSource = dt1;
 
 
-            cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", o.Nume AS City FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+            cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", r.Meniu,o.Nume AS City FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
             da1 = new SqlDataAdapter(cmd);
             dt1 = new DataTable();
             da1.Fill(dt1);
@@ -148,15 +182,63 @@ namespace proiect
         }
 
 
-
-        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void buttonNewRoom_Click(object sender, EventArgs e)
         {
-         
-            groupBoxTables.Visible = true;
-            
-            if(e.RowIndex>= 0 && e.ColumnIndex >= 0 && e.RowIndex < dt1.Rows.Count)
+            textBoxFacilities.Text = "";
+            textBoxTables.Text = "";
+            buttonNewRoom.BackColor = Color.LawnGreen;
+            buttonModifyRoom.BackColor = SystemColors.Control;
+        }
 
+        private void buttonAddRoom_Click(object sender, EventArgs e)
+        {
+            if (modeRoom == (int)Modes.NEW_RESTAURANT)
             {
+                int.TryParse(textBoxTables.Text, out int tablesCount);
+                if (tablesCount > 0)
+                {
+                    try
+                    {
+                        string facilities = textBoxFacilities.Text.Trim();
+                        SqlCommand cmd1 = conn.CreateCommand();
+                        cmd1 = conn.CreateCommand();
+                        cmd1.CommandText = "insert into Sala(IdRestaurant,Mese,Facilitati) values (@IdRestaurant,@Mese,@Facilitati)";
+                        cmd1.Parameters.AddWithValue("@IdRestaurant", restaurantID);
+                        cmd1.Parameters.AddWithValue("@Mese", tablesCount);
+                        cmd1.Parameters.AddWithValue("@Facilitati", facilities);
+                        cmd1.ExecuteNonQuery();
+                        RestaurantsForm_Shown(sender, EventArgs.Empty);
+                        MessageBox.Show("Room added succesfully!");
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message); }
+                }
+            }
+            else
+            {
+                //TODO
+            }
+        }
+
+        private void buttonModifyRestaurant_Click(object sender, EventArgs e)
+        {
+            modeRestaurant = (int)Modes.MODIFY;
+            buttonModifyRestaurant.BackColor = Color.LawnGreen;
+            buttonNewRestaurant.BackColor = SystemColors.Control;
+        }
+
+        private void buttonModifyRoom_Click(object sender, EventArgs e)
+        {
+            modeRoom = (int)Modes.MODIFY;
+            buttonModifyRoom.BackColor = Color.LawnGreen;
+            buttonNewRoom.BackColor = SystemColors.Control;
+        }
+
+        private void dataGridViewRestaurants_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            groupBoxTables.Visible = true;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dt1.Rows.Count)
+            {
+
                 try
                 {
                     int.TryParse(dataGridViewRestaurants.Rows[e.RowIndex].Cells[0].Value.ToString(), out restaurantID);
@@ -167,36 +249,25 @@ namespace proiect
                     da2.Fill(dt2);
                     dataGridViewRooms.DataSource = dt2;
                     groupBoxTables.Enabled = true;
-                    dataGridViewRooms.Enabled = true;
-                }catch (Exception ex) { MessageBox.Show(ex.Message); }
+                    dataGridViewRooms.Enabled = true; 
+                    if (modeRestaurant == (int)Modes.MODIFY)
+                    {
+                        textBoxName.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        textBoxAddress.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        comboBoxCity.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        textBoxMenu.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
+    
 
-        private void buttonNewRoom_Click(object sender, EventArgs e)
-        {
-            textBoxFacilities.Text = "";
-            textBoxTables.Text = "";
-        }
 
-        private void buttonAddRoom_Click(object sender, EventArgs e)
+        private void dataGridViewRooms_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int.TryParse(textBoxTables.Text, out int tablesCount);
-            if (tablesCount > 0)
-            {
-                try
-                {
-                    string facilities = textBoxFacilities.Text.Trim();
-                    SqlCommand cmd1 = conn.CreateCommand();
-                    cmd1 = conn.CreateCommand();
-                    cmd1.CommandText = "insert into Sala(IdRestaurant,Mese,Facilitati) values (@IdRestaurant,@Mese,@Facilitati)";
-                    cmd1.Parameters.AddWithValue("@IdRestaurant", restaurantID);
-                    cmd1.Parameters.AddWithValue("@Mese", tablesCount);
-                    cmd1.Parameters.AddWithValue("@Facilitati", facilities);
-                    cmd1.ExecuteNonQuery();
-                    RestaurantsForm_Shown(sender, EventArgs.Empty);
-                    MessageBox.Show("Room added succesfully!");
-                }catch (Exception ex) { MessageBox.Show(ex.Message); }
-            }
+
         }
     }
 }

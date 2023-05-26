@@ -40,7 +40,9 @@
             this.buttonNewRestaurant = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxRestaurant = new System.Windows.Forms.GroupBox();
+            this.buttonModifyRestaurant = new System.Windows.Forms.Button();
             this.groupBoxTables = new System.Windows.Forms.GroupBox();
+            this.buttonModifyRoom = new System.Windows.Forms.Button();
             this.textBoxFacilities = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelTables = new System.Windows.Forms.Label();
@@ -48,6 +50,8 @@
             this.buttonAddRoom = new System.Windows.Forms.Button();
             this.buttonNewRoom = new System.Windows.Forms.Button();
             this.dataGridViewRooms = new System.Windows.Forms.DataGridView();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).BeginInit();
             this.groupBoxRestaurant.SuspendLayout();
             this.groupBoxTables.SuspendLayout();
@@ -60,14 +64,14 @@
             this.dataGridViewRestaurants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridViewRestaurants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRestaurants.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridViewRestaurants.Location = new System.Drawing.Point(3, 328);
+            this.dataGridViewRestaurants.Location = new System.Drawing.Point(3, 374);
             this.dataGridViewRestaurants.Name = "dataGridViewRestaurants";
             this.dataGridViewRestaurants.ReadOnly = true;
             this.dataGridViewRestaurants.RowHeadersWidth = 51;
             this.dataGridViewRestaurants.RowTemplate.Height = 29;
-            this.dataGridViewRestaurants.Size = new System.Drawing.Size(653, 407);
+            this.dataGridViewRestaurants.Size = new System.Drawing.Size(653, 361);
             this.dataGridViewRestaurants.TabIndex = 0;
-            this.dataGridViewRestaurants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridViewRestaurants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRestaurants_CellClick);
             // 
             // labelName
             // 
@@ -141,7 +145,7 @@
             // 
             // buttonNewRestaurant
             // 
-            this.buttonNewRestaurant.Location = new System.Drawing.Point(472, 55);
+            this.buttonNewRestaurant.Location = new System.Drawing.Point(472, 15);
             this.buttonNewRestaurant.Name = "buttonNewRestaurant";
             this.buttonNewRestaurant.Size = new System.Drawing.Size(141, 51);
             this.buttonNewRestaurant.TabIndex = 9;
@@ -151,7 +155,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(474, 253);
+            this.buttonSave.Location = new System.Drawing.Point(474, 317);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(141, 51);
             this.buttonSave.TabIndex = 10;
@@ -161,6 +165,9 @@
             // 
             // groupBoxRestaurant
             // 
+            this.groupBoxRestaurant.Controls.Add(this.labelPhone);
+            this.groupBoxRestaurant.Controls.Add(this.textBoxPhone);
+            this.groupBoxRestaurant.Controls.Add(this.buttonModifyRestaurant);
             this.groupBoxRestaurant.Controls.Add(this.dataGridViewRestaurants);
             this.groupBoxRestaurant.Controls.Add(this.buttonSave);
             this.groupBoxRestaurant.Controls.Add(this.labelName);
@@ -179,8 +186,19 @@
             this.groupBoxRestaurant.TabIndex = 11;
             this.groupBoxRestaurant.TabStop = false;
             // 
+            // buttonModifyRestaurant
+            // 
+            this.buttonModifyRestaurant.Location = new System.Drawing.Point(474, 79);
+            this.buttonModifyRestaurant.Name = "buttonModifyRestaurant";
+            this.buttonModifyRestaurant.Size = new System.Drawing.Size(141, 51);
+            this.buttonModifyRestaurant.TabIndex = 11;
+            this.buttonModifyRestaurant.Text = "Modify\r\nRestaurant";
+            this.buttonModifyRestaurant.UseVisualStyleBackColor = true;
+            this.buttonModifyRestaurant.Click += new System.EventHandler(this.buttonModifyRestaurant_Click);
+            // 
             // groupBoxTables
             // 
+            this.groupBoxTables.Controls.Add(this.buttonModifyRoom);
             this.groupBoxTables.Controls.Add(this.textBoxFacilities);
             this.groupBoxTables.Controls.Add(this.label2);
             this.groupBoxTables.Controls.Add(this.labelTables);
@@ -194,6 +212,16 @@
             this.groupBoxTables.Size = new System.Drawing.Size(601, 738);
             this.groupBoxTables.TabIndex = 12;
             this.groupBoxTables.TabStop = false;
+            // 
+            // buttonModifyRoom
+            // 
+            this.buttonModifyRoom.Location = new System.Drawing.Point(448, 79);
+            this.buttonModifyRoom.Name = "buttonModifyRoom";
+            this.buttonModifyRoom.Size = new System.Drawing.Size(141, 51);
+            this.buttonModifyRoom.TabIndex = 17;
+            this.buttonModifyRoom.Text = "Modify\r\nRoom";
+            this.buttonModifyRoom.UseVisualStyleBackColor = true;
+            this.buttonModifyRoom.Click += new System.EventHandler(this.buttonModifyRoom_Click);
             // 
             // textBoxFacilities
             // 
@@ -242,7 +270,7 @@
             // 
             // buttonNewRoom
             // 
-            this.buttonNewRoom.Location = new System.Drawing.Point(448, 55);
+            this.buttonNewRoom.Location = new System.Drawing.Point(448, 15);
             this.buttonNewRoom.Name = "buttonNewRoom";
             this.buttonNewRoom.Size = new System.Drawing.Size(141, 51);
             this.buttonNewRoom.TabIndex = 11;
@@ -253,12 +281,30 @@
             // dataGridViewRooms
             // 
             this.dataGridViewRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRooms.Location = new System.Drawing.Point(3, 328);
+            this.dataGridViewRooms.Location = new System.Drawing.Point(3, 374);
             this.dataGridViewRooms.Name = "dataGridViewRooms";
             this.dataGridViewRooms.RowHeadersWidth = 51;
             this.dataGridViewRooms.RowTemplate.Height = 29;
-            this.dataGridViewRooms.Size = new System.Drawing.Size(595, 407);
+            this.dataGridViewRooms.Size = new System.Drawing.Size(595, 361);
             this.dataGridViewRooms.TabIndex = 0;
+            this.dataGridViewRooms.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRooms_CellClick);
+            // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(11, 332);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(53, 20);
+            this.labelPhone.TabIndex = 12;
+            this.labelPhone.Text = "Phone:";
+            this.labelPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(82, 332);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(384, 27);
+            this.textBoxPhone.TabIndex = 13;
             // 
             // RestaurantsForm
             // 
@@ -304,5 +350,9 @@
         private TextBox textBoxTables;
         private Button buttonAddRoom;
         private Button buttonNewRoom;
+        private Button buttonModifyRestaurant;
+        private Button buttonModifyRoom;
+        private Label labelPhone;
+        private TextBox textBoxPhone;
     }
 }

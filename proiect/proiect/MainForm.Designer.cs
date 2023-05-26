@@ -49,7 +49,7 @@
             // 
             this.buttonSearch.Location = new System.Drawing.Point(293, 274);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(156, 55);
+            this.buttonSearch.Size = new System.Drawing.Size(156, 69);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             this.buttonAccount.Location = new System.Drawing.Point(492, 274);
             this.buttonAccount.Name = "buttonAccount";
-            this.buttonAccount.Size = new System.Drawing.Size(157, 55);
+            this.buttonAccount.Size = new System.Drawing.Size(157, 69);
             this.buttonAccount.TabIndex = 5;
-            this.buttonAccount.Text = "Add or Create Account";
+            this.buttonAccount.Text = "Add/Create Account\r\nor\r\nManage Restaurants";
             this.buttonAccount.UseVisualStyleBackColor = true;
             this.buttonAccount.Click += new System.EventHandler(this.buttonAccount_Click);
             // 
@@ -78,7 +78,7 @@
             // 
             this.buttonLogOut.Location = new System.Drawing.Point(83, 274);
             this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(157, 55);
+            this.buttonLogOut.Size = new System.Drawing.Size(157, 69);
             this.buttonLogOut.TabIndex = 7;
             this.buttonLogOut.Text = "Log out";
             this.buttonLogOut.UseVisualStyleBackColor = true;
