@@ -17,12 +17,6 @@ namespace proiect
 
         public UserManager()
         {
-            // adaugare admin
-            //User user = new User(1, "admin", "admin");
-            //_users.Add(user);
-
-
-            //doar asta tre sa ramana
             loadUsersFromDataBase();
         }
         public User CurrentUser

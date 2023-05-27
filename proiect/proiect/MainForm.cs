@@ -70,6 +70,22 @@ namespace proiect
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            buttonLogOut.Visible = false;
+            buttonLogIn.Visible = true;
+            if (this.Visible == true)
+            {
+                if (userManager.CurrentUser != null)
+                {
+                    labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
+                    buttonLogIn.Visible = false;
+                    buttonLogOut.Visible = true;
+                }
+                else
+                {
+                    labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
+                }
+
+            }
         }
 
         private void MainForm_VisibleChanged(object sender, EventArgs e)
