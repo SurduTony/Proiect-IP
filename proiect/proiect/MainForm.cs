@@ -72,40 +72,47 @@ namespace proiect
         {
             buttonLogOut.Visible = false;
             buttonLogIn.Visible = true;
-            /* if (this.Visible == true)
-             {
-                 if (userManager.CurrentUser != null)
-                 {
-                     labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
-                     buttonLogIn.Visible = false;
-                     buttonLogOut.Visible = true;
-                 }
-                 else
-                 {
-                     labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
-                 }
+            try
+            {
+                if (this.Visible == true)
+                {
+                    if (userManager.CurrentUser != null)
+                    {
+                        labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
+                        buttonLogIn.Visible = false;
+                        buttonLogOut.Visible = true;
+                    }
+                    else
+                    {
+                        labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
+                    }
 
-             }*/
+                }
+            }
+            catch (Exception ex) { }
         }
 
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
             buttonLogOut.Visible = false;
             buttonLogIn.Visible = true;
-            /*if (this.Visible == true)
+            try
             {
-                if (userManager.CurrentUser != null)
+                if (this.Visible == true)
                 {
-                    labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
-                    buttonLogIn.Visible = false;
-                    buttonLogOut.Visible = true;
-                }
-                else
-                {
-                    labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
-                }
+                    if (userManager.CurrentUser != null)
+                    {
+                        labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
+                        buttonLogIn.Visible = false;
+                        buttonLogOut.Visible = true;
+                    }
+                    else
+                    {
+                        labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
+                    }
 
-            }*/
+                }
+            }catch (Exception ex) { }
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
