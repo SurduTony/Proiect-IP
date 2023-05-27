@@ -98,3 +98,4 @@ D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.SearchForm.resour
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.UserOptionsForm.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComplete
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.RestaurantsForm.resources
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\restaurants.mdf

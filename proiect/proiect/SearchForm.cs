@@ -14,7 +14,9 @@ namespace proiect
     //Sacrieriu Razvan-Marcian
     public partial class SearchForm : Form
     {
-        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+Directory.GetCurrentDirectory()+"\\restaurants.mdf;"+"Integrated Security = True");
+       public static string currentPath = Directory.GetCurrentDirectory();
+       public static string newPath = currentPath.Substring(0, currentPath.IndexOf("bin"));
+        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+newPath+"restaurants.mdf;"+"Integrated Security = True");
 
         public SearchForm()
         {

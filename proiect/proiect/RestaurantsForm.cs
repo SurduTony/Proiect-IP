@@ -20,7 +20,9 @@ namespace proiect
         public int modeRestaurant = 0;
         public int modeRoom = 0;
         public static int idOras;
-        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + Directory.GetCurrentDirectory() + "\\restaurants.mdf;" + "Integrated Security = True");
+        public static string currentPath = Directory.GetCurrentDirectory();
+        public static string newPath = currentPath.Substring(0, currentPath.IndexOf("bin"));
+        SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + newPath + "restaurants.mdf;" + "Integrated Security = True");
         public static DataTable dt1 = new DataTable();
         public RestaurantsForm()
         {
