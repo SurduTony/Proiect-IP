@@ -31,24 +31,6 @@ D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.AssemblyReference.cache
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.LoginForm.resources
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.MainForm.resources
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.GenerateResource.cache
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.GeneratedMSBuildEditorConfig.editorconfig
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfoInputs.cache
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfo.cs
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CoreCompileInputs.cache
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.dll
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect.dll
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.exe
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.deps.json
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.runtimeconfig.json
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll
 D:\Proiect IP\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\Azure.Core.dll
 D:\Proiect IP\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\Azure.Identity.dll
 D:\Proiect IP\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
@@ -87,15 +69,33 @@ D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.UserOp
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComplete
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.SearchForm.resources
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AddAccountForm.resources
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\restaurants.mdf
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.exe
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.deps.json
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.runtimeconfig.json
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.AssemblyReference.cache
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AddAccountForm.resources
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.LoginForm.resources
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.MainForm.resources
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.RestaurantsForm.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.SearchForm.resources
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.UserOptionsForm.resources
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.GenerateResource.cache
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfoInputs.cache
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfo.cs
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CoreCompileInputs.cache
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComplete
-D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.RestaurantsForm.resources
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\restaurants.mdf
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.dll
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect.dll
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
+D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll

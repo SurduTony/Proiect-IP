@@ -72,27 +72,27 @@ namespace proiect
         {
             buttonLogOut.Visible = false;
             buttonLogIn.Visible = true;
-            if (this.Visible == true)
-            {
-                if (userManager.CurrentUser != null)
-                {
-                    labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
-                    buttonLogIn.Visible = false;
-                    buttonLogOut.Visible = true;
-                }
-                else
-                {
-                    labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
-                }
+            /* if (this.Visible == true)
+             {
+                 if (userManager.CurrentUser != null)
+                 {
+                     labelUser.Text = "Welcome " + userManager.CurrentUser.Name;
+                     buttonLogIn.Visible = false;
+                     buttonLogOut.Visible = true;
+                 }
+                 else
+                 {
+                     labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
+                 }
 
-            }
+             }*/
         }
 
         private void MainForm_VisibleChanged(object sender, EventArgs e)
         {
             buttonLogOut.Visible = false;
             buttonLogIn.Visible = true;
-            if (this.Visible == true)
+            /*if (this.Visible == true)
             {
                 if (userManager.CurrentUser != null)
                 {
@@ -105,7 +105,7 @@ namespace proiect
                     labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
                 }
 
-            }
+            }*/
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
