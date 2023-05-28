@@ -39,6 +39,13 @@ namespace proiect
                             MainForm.userManager.CurrentUser = new User(textBoxName.Text, textBoxPassword.Text);
                             MainForm.userManager.resetUserList();
                         }
+                        else
+                        {
+                            MessageBox.Show("Invalid request! Please try again!");
+                            textBoxConfirm.Text = "";
+                            textBoxName.Text = "";
+                            textBoxPassword.Text = "";
+                        }
 
                     }
                     catch (Exception ex)
