@@ -86,7 +86,7 @@ namespace proiect
             dataGridView1.DataSource = dt1;
         }
 
-
+        //Inchidere form de cautare
         private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form? form = MainForm.caretaker?.Undo();

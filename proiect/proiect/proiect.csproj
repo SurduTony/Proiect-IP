@@ -18,6 +18,9 @@
     <Reference Include="User">
       <HintPath>..\dll\User.dll</HintPath>
     </Reference>
+    <Reference Include="UserManager">
+      <HintPath>..\dll\UserManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   
