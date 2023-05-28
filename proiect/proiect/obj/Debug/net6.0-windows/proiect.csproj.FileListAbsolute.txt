@@ -98,3 +98,4 @@ D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\User.dll

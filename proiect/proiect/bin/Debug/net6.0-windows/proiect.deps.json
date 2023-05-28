@@ -10,7 +10,8 @@
         "dependencies": {
           "System.Data.SqlClient": "4.8.5",
           "runtime.native.System.Data.SqlClient.sni": "4.7.0",
-          "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0"
+          "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
+          "User": "1.0.0.0"
         },
         "runtime": {
           "proiect.dll": {}
@@ -90,7 +91,15 @@
           "System.Security.Principal.Windows": "4.7.0"
         }
       },
-      "System.Security.Principal.Windows/4.7.0": {}
+      "System.Security.Principal.Windows/4.7.0": {},
+      "User/1.0.0.0": {
+        "runtime": {
+          "User.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -161,6 +170,11 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "User/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -15,6 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="User">
+      <HintPath>..\dll\User.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  
+
+  <ItemGroup>
     <None Update="restaurants.mdf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
