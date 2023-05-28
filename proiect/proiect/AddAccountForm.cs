@@ -35,9 +35,20 @@ namespace proiect
                             cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text);
                             cmd1.ExecuteNonQuery();
                             MessageBox.Show("Account created succesfully!");
-                            groupBox2.Visible = true;
-                            MainForm.userManager.CurrentUser = new User(textBoxName.Text, textBoxPassword.Text);
+
+                            cmd1.CommandText = "select IdAdministrator from Administrator where Nume like ('%" + textBoxName.Text + "%') and Parola like ('%" + textBoxPassword.Text + "%')";
+                            int idAdministrator = Convert.ToInt32(cmd1.ExecuteScalar());
+
+                            MessageBox.Show(idAdministrator.ToString());
+                            MainForm.userManager.CurrentUser = new User(idAdministrator,textBoxName.Text, textBoxPassword.Text);
                             MainForm.userManager.resetUserList();
+                            Form? form = MainForm.caretaker?.Undo();
+                            if (form != null)
+                            {
+                                form.Show();
+                                this.Dispose();
+                                this.Close();
+                            }
                         }
                         else
                         {
@@ -94,27 +105,7 @@ namespace proiect
                 this.Dispose();
                 this.Close();
             }
-        }
-
-        private void buttonRestaurant_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                RestaurantsForm restaurantsForm = new();
-                restaurantsForm.Show();
-                if (MainForm.caretaker != null)
-                {
-                    MainForm.caretaker.form = this;
-                    MainForm.caretaker.Save();
-                }
-                else
-                {
-                    MessageBox.Show("Eroare de navigare");
-                }
-                this.Hide();
-            }catch (Exception ex) { MessageBox.Show(ex.Message); }  
-        }
-    
+        } 
 
     }
 }
