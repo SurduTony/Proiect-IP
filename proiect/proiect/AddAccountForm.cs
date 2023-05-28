@@ -61,8 +61,9 @@ namespace proiect
                     textBoxConfirm.Text = "";
 
                 }
-            }catch(Exception ex) 
-            { 
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
                 Form? form = MainForm.caretaker?.Undo();
                 if (form != null)
@@ -97,11 +98,29 @@ namespace proiect
 
         private void buttonRestaurant_Click(object sender, EventArgs e)
         {
-            RestaurantsForm userOptions = new RestaurantsForm();
-            userOptions.Show();
-            MainForm.caretaker = new Caretaker(this);
-            MainForm.caretaker.Save();
-            this.Hide();
+            if (MainForm.userManager.getUser(textBoxName.Text.Trim(), textBoxPassword.Text.Trim()) != null)
+            {
+                MainForm.userManager.CurrentUser = MainForm.userManager.getUser(textBoxName.Text.Trim(), textBoxPassword.Text.Trim());
+
+
+                RestaurantsForm restaurantsForm = new();
+                restaurantsForm.Show();
+                if (MainForm.caretaker != null)
+                {
+                    MainForm.caretaker.form = this;
+                    MainForm.caretaker.Save();
+                }
+                else
+                {
+                    MessageBox.Show("Eroare de navigare");
+                }
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Eroare!");
+            }
+
         }
     }
 }

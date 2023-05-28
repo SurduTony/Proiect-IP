@@ -53,6 +53,8 @@ namespace proiect
                         conn.Close();
                     conn.Open();
                     buttonNewRestaurant.BackColor = Color.LawnGreen;
+                    buttonNewRoom.BackColor = Color.LawnGreen;
+
                     SqlCommand cmd = conn.CreateCommand();
                     cmd.CommandText = "select * from Oras";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -93,6 +95,7 @@ namespace proiect
             textBoxMenu.Text = "";
             textBoxName.Text = "";
             comboBoxCity.Text = "";
+            textBoxPhone.Text = "";
             buttonNewRestaurant.BackColor = Color.LawnGreen;
             buttonModifyRestaurant.BackColor = SystemColors.Control;
         }

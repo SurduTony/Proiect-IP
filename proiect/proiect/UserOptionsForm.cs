@@ -26,6 +26,10 @@ namespace proiect
                 MainForm.caretaker.form = this;
                 MainForm.caretaker.Save();
             }
+            else
+            {
+                MessageBox.Show("Eroare de navigare");
+            }
             this.Hide();
         }
 

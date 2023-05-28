@@ -103,14 +103,14 @@
             this.textBoxName.Location = new System.Drawing.Point(82, 35);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(384, 27);
-            this.textBoxName.TabIndex = 5;
+            this.textBoxName.TabIndex = 1;
             // 
             // textBoxAddress
             // 
             this.textBoxAddress.Location = new System.Drawing.Point(82, 79);
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(384, 27);
-            this.textBoxAddress.TabIndex = 6;
+            this.textBoxAddress.TabIndex = 2;
             // 
             // textBoxMenu
             // 
@@ -118,7 +118,7 @@
             this.textBoxMenu.Multiline = true;
             this.textBoxMenu.Name = "textBoxMenu";
             this.textBoxMenu.Size = new System.Drawing.Size(384, 135);
-            this.textBoxMenu.TabIndex = 7;
+            this.textBoxMenu.TabIndex = 4;
             // 
             // comboBoxCity
             // 
@@ -126,7 +126,7 @@
             this.comboBoxCity.Location = new System.Drawing.Point(82, 126);
             this.comboBoxCity.Name = "comboBoxCity";
             this.comboBoxCity.Size = new System.Drawing.Size(157, 28);
-            this.comboBoxCity.TabIndex = 8;
+            this.comboBoxCity.TabIndex = 3;
             // 
             // buttonNewRestaurant
             // 
@@ -201,7 +201,7 @@
             this.textBoxPhone.Location = new System.Drawing.Point(82, 332);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(384, 27);
-            this.textBoxPhone.TabIndex = 13;
+            this.textBoxPhone.TabIndex = 5;
             // 
             // buttonModifyRestaurant
             // 
