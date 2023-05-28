@@ -65,7 +65,7 @@ namespace proiect
 
 
                     cmd = conn.CreateCommand();
-                    cmd.CommandText = "SELECT r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\",r.Meniu, o.Nume AS \"City\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+                    cmd.CommandText = "SELECT r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\",r.Meniu, o.Nume AS \"City\", r.Telefon AS \"Phone Number\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
                     SqlDataAdapter da1 = new SqlDataAdapter(cmd);
                     DataTable dt1 = new DataTable();
                     da1.Fill(dt1);
@@ -111,11 +111,12 @@ namespace proiect
                     idOras = Convert.ToInt32(cmd.ExecuteScalar());
 
                     SqlCommand cmd1 = conn.CreateCommand();
-                    cmd1.CommandText = "insert into Restaurant(Nume,Adresa,IdOras,Meniu) values (@Nume,@Adresa,@IdOras,@Meniu)";
+                    cmd1.CommandText = "insert into Restaurant(Nume,Adresa,IdOras,Meniu,Telefon) values (@Nume,@Adresa,@IdOras,@Meniu,@Telefon)";
                     cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
                     cmd1.Parameters.AddWithValue("@Adresa", textBoxAddress.Text.Trim());
                     cmd1.Parameters.AddWithValue("@IdOras", idOras);
                     cmd1.Parameters.AddWithValue("@Meniu", textBoxMenu.Text.Trim());
+                    cmd1.Parameters.AddWithValue("@Telefon", textBoxPhone.Text.Trim());
                     cmd1.ExecuteNonQuery();
 
 
@@ -145,12 +146,14 @@ namespace proiect
                     int idRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
 
                     SqlCommand cmd1 = conn.CreateCommand();
-                    cmd1.CommandText = "UPDATE Restaurant SET Nume = @Nume, Adresa = @Adresa, IdOras = @IdOras, Meniu = @Meniu WHERE IdRestaurant = @IdRestaurant";
+                    cmd1.CommandText = "UPDATE Restaurant SET Nume = @Nume, Adresa = @Adresa, IdOras = @IdOras, Meniu = @Meniu, Telefon = @Telefon WHERE IdRestaurant = @IdRestaurant";
                     cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
                     cmd1.Parameters.AddWithValue("@Adresa", textBoxAddress.Text.Trim());
                     cmd1.Parameters.AddWithValue("@IdOras", idOras);
                     cmd1.Parameters.AddWithValue("@Meniu", textBoxMenu.Text.Trim());
                     cmd1.Parameters.AddWithValue("@IdRestaurant", idRestaurant);
+                    cmd1.Parameters.AddWithValue("@Telefon", textBoxPhone.Text.Trim());
+
                     RestaurantsForm_Shown(sender, EventArgs.Empty);
                     cmd1.ExecuteNonQuery();
 
@@ -176,7 +179,7 @@ namespace proiect
 
 
 
-            cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", r.Meniu,o.Nume AS City FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
+            cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", r.Meniu,o.Nume AS City, r.Telefon AS \"Phone Number\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
             da1 = new SqlDataAdapter(cmd);
             dt1 = new DataTable();
             da1.Fill(dt1);
@@ -285,6 +288,7 @@ namespace proiect
                         textBoxAddress.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[2].Value.ToString();
                         comboBoxCity.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[4].Value.ToString();
                         textBoxMenu.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        textBoxPhone.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                     }
                     cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + dataGridViewRestaurants.Rows[e.RowIndex].Cells[1].Value.ToString() + "%') and adresa like ('%" + dataGridViewRestaurants.Rows[e.RowIndex].Cells[2].Value.ToString() + "%')", conn);
