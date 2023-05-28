@@ -31,8 +31,8 @@ namespace proiect
                         {
                             SqlCommand cmd1 = conn.CreateCommand();
                             cmd1.CommandText = "insert into Administrator(Nume,Parola) values (@Nume,@Parola)";
-                            cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
-                            cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text.Trim());
+                            cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text);
+                            cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text);
                             cmd1.ExecuteNonQuery();
                             MessageBox.Show("Account created succesfully!");
                             groupBox2.Visible = true;
@@ -98,11 +98,8 @@ namespace proiect
 
         private void buttonRestaurant_Click(object sender, EventArgs e)
         {
-            if (MainForm.userManager.getUser(textBoxName.Text.Trim(), textBoxPassword.Text.Trim()) != null)
+            try
             {
-                MainForm.userManager.CurrentUser = MainForm.userManager.getUser(textBoxName.Text.Trim(), textBoxPassword.Text.Trim());
-
-
                 RestaurantsForm restaurantsForm = new();
                 restaurantsForm.Show();
                 if (MainForm.caretaker != null)
@@ -115,12 +112,9 @@ namespace proiect
                     MessageBox.Show("Eroare de navigare");
                 }
                 this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Eroare!");
-            }
-
+            }catch (Exception ex) { MessageBox.Show(ex.Message); }  
         }
+    
+
     }
 }
