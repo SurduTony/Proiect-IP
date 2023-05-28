@@ -39,7 +39,7 @@ namespace proiect
                             cmd1.CommandText = "select IdAdministrator from Administrator where Nume like ('%" + textBoxName.Text + "%') and Parola like ('%" + textBoxPassword.Text + "%')";
                             int idAdministrator = Convert.ToInt32(cmd1.ExecuteScalar());
 
-                            MessageBox.Show(idAdministrator.ToString());
+                            
                             MainForm.userManager.CurrentUser = new User(idAdministrator,textBoxName.Text, textBoxPassword.Text);
                             MainForm.userManager.resetUserList();
                             Form? form = MainForm.caretaker?.Undo();
