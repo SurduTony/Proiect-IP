@@ -28,84 +28,155 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelSearch = new System.Windows.Forms.Label();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.groupBoxSearch = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBoxSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            comboBox1 = new ComboBox();
+            labelSearch = new Label();
+            buttonSearch = new Button();
+            groupBoxSearch = new GroupBox();
+            buttonSearchMenu = new Button();
+            textBoxMenu = new TextBox();
+            label2 = new Label();
+            textBoxName = new TextBox();
+            buttonSearchName = new Button();
+            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            groupBoxSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 53);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 28);
-            this.comboBox1.TabIndex = 0;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(10, 40);
+            comboBox1.Margin = new Padding(3, 2, 3, 2);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(133, 23);
+            comboBox1.TabIndex = 0;
             // 
             // labelSearch
             // 
-            this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(12, 23);
-            this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(103, 20);
-            this.labelSearch.TabIndex = 1;
-            this.labelSearch.Text = "Search by city:";
+            labelSearch.AutoSize = true;
+            labelSearch.Location = new Point(10, 17);
+            labelSearch.Name = "labelSearch";
+            labelSearch.Size = new Size(83, 15);
+            labelSearch.TabIndex = 1;
+            labelSearch.Text = "Search by city:";
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(169, 52);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(94, 29);
-            this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            buttonSearch.Location = new Point(148, 39);
+            buttonSearch.Margin = new Padding(3, 2, 3, 2);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(82, 22);
+            buttonSearch.TabIndex = 2;
+            buttonSearch.Text = "Search";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click;
             // 
             // groupBoxSearch
             // 
-            this.groupBoxSearch.Controls.Add(this.labelSearch);
-            this.groupBoxSearch.Controls.Add(this.buttonSearch);
-            this.groupBoxSearch.Controls.Add(this.comboBox1);
-            this.groupBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxSearch.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxSearch.Name = "groupBoxSearch";
-            this.groupBoxSearch.Size = new System.Drawing.Size(1140, 594);
-            this.groupBoxSearch.TabIndex = 3;
-            this.groupBoxSearch.TabStop = false;
+            groupBoxSearch.Controls.Add(buttonSearchMenu);
+            groupBoxSearch.Controls.Add(textBoxMenu);
+            groupBoxSearch.Controls.Add(label2);
+            groupBoxSearch.Controls.Add(textBoxName);
+            groupBoxSearch.Controls.Add(buttonSearchName);
+            groupBoxSearch.Controls.Add(label1);
+            groupBoxSearch.Controls.Add(labelSearch);
+            groupBoxSearch.Controls.Add(buttonSearch);
+            groupBoxSearch.Controls.Add(comboBox1);
+            groupBoxSearch.Dock = DockStyle.Fill;
+            groupBoxSearch.Location = new Point(0, 0);
+            groupBoxSearch.Margin = new Padding(3, 2, 3, 2);
+            groupBoxSearch.Name = "groupBoxSearch";
+            groupBoxSearch.Padding = new Padding(3, 2, 3, 2);
+            groupBoxSearch.Size = new Size(998, 446);
+            groupBoxSearch.TabIndex = 3;
+            groupBoxSearch.TabStop = false;
+            // 
+            // buttonSearchMenu
+            // 
+            buttonSearchMenu.Location = new Point(863, 42);
+            buttonSearchMenu.Margin = new Padding(3, 2, 3, 2);
+            buttonSearchMenu.Name = "buttonSearchMenu";
+            buttonSearchMenu.Size = new Size(85, 21);
+            buttonSearchMenu.TabIndex = 8;
+            buttonSearchMenu.Text = "Search";
+            buttonSearchMenu.UseVisualStyleBackColor = true;
+            buttonSearchMenu.Click += buttonSearchMenu_Click;
+            // 
+            // textBoxMenu
+            // 
+            textBoxMenu.Location = new Point(730, 42);
+            textBoxMenu.Name = "textBoxMenu";
+            textBoxMenu.Size = new Size(127, 23);
+            textBoxMenu.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(730, 17);
+            label2.Name = "label2";
+            label2.Size = new Size(95, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Search by menu:";
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(394, 40);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(107, 23);
+            textBoxName.TabIndex = 5;
+            // 
+            // buttonSearchName
+            // 
+            buttonSearchName.Location = new Point(507, 39);
+            buttonSearchName.Margin = new Padding(3, 2, 3, 2);
+            buttonSearchName.Name = "buttonSearchName";
+            buttonSearchName.Size = new Size(85, 21);
+            buttonSearchName.TabIndex = 4;
+            buttonSearchName.Text = "Search";
+            buttonSearchName.UseVisualStyleBackColor = true;
+            buttonSearchName.Click += buttonSearchName_Click_1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(394, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Search by name:";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 208);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(1140, 386);
-            this.dataGridView1.TabIndex = 4;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Bottom;
+            dataGridView1.Location = new Point(0, 201);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(998, 245);
+            dataGridView1.TabIndex = 4;
             // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 594);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.groupBoxSearch);
-            this.Name = "SearchForm";
-            this.Text = "SearchForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchForm_FormClosing);
-            this.Load += new System.EventHandler(this.SearchForm_Load);
-            this.groupBoxSearch.ResumeLayout(false);
-            this.groupBoxSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(998, 446);
+            Controls.Add(dataGridView1);
+            Controls.Add(groupBoxSearch);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "SearchForm";
+            Text = "SearchForm";
+            FormClosing += SearchForm_FormClosing;
+            Load += SearchForm_Load;
+            groupBoxSearch.ResumeLayout(false);
+            groupBoxSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -115,5 +186,11 @@
         private Button buttonSearch;
         private GroupBox groupBoxSearch;
         private DataGridView dataGridView1;
+        private Button buttonSearchMenu;
+        private TextBox textBoxMenu;
+        private Label label2;
+        private TextBox textBoxName;
+        private Button buttonSearchName;
+        private Label label1;
     }
 }
