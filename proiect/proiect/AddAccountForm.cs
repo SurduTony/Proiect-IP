@@ -18,37 +18,52 @@ namespace proiect
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (MainForm.userManager.userExists(textBoxName.Text, textBoxPassword.Text) == false)
+            try
             {
-                try
+                if (MainForm.userManager.userExists(textBoxName.Text, textBoxPassword.Text) == false)
                 {
-                    if (conn.State == System.Data.ConnectionState.Open)
-                        conn.Close();
-                    conn.Open();
-                    SqlCommand cmd1 = conn.CreateCommand();
+                    try
+                    {
+                        if (conn.State == System.Data.ConnectionState.Open)
+                            conn.Close();
+                        conn.Open();
+                        if (textBoxName.Text != "" && textBoxName.Text != " " && textBoxPassword.Text.Equals(textBoxConfirm.Text))
+                        {
+                            SqlCommand cmd1 = conn.CreateCommand();
+                            cmd1.CommandText = "insert into Administrator(Nume,Parola) values (@Nume,@Parola)";
+                            cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
+                            cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text.Trim());
+                            cmd1.ExecuteNonQuery();
+                            MessageBox.Show("Account created succesfully!");
+                            groupBox2.Visible = true;
+                            MainForm.userManager.CurrentUser = new User(textBoxName.Text, textBoxPassword.Text);
+                            MainForm.userManager.resetUserList();
+                        }
 
-                    cmd1.CommandText = "insert into Administrator(Nume,Parola) values (@Nume,@Parola)";
-                    cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
-                    cmd1.Parameters.AddWithValue("@Parola", textBoxPassword.Text.Trim());
-                    cmd1.ExecuteNonQuery();
-                    MessageBox.Show("Account created succesfully!");
-                    groupBox2.Visible = true;
-                    MainForm.userManager.CurrentUser = new User(textBoxName.Text, textBoxPassword.Text);
-                    MainForm.userManager.resetUserList();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Could not create account! Reason: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This user already exists. Try another username or password.");
+                    textBoxPassword.Text = "";
+                    textBoxName.Text = "";
+                    textBoxConfirm.Text = "";
 
                 }
-                catch (Exception ex)
+            }catch(Exception ex) 
+            { 
+                MessageBox.Show(ex.Message);
+                Form? form = MainForm.caretaker?.Undo();
+                if (form != null)
                 {
-                    MessageBox.Show("Could not create account! Reason: " + ex.Message);
+                    form.Show();
+                    this.Dispose();
+                    this.Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("This user already exists. Try another username or password.");
-                textBoxPassword.Text = "";
-                textBoxName.Text = "";
-                textBoxConfirm.Text = "";
-
             }
         }
 
