@@ -69,12 +69,7 @@ D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.UserOp
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComplete
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.SearchForm.resources
 D:\Proiect IP\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AddAccountForm.resources
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\restaurants.mdf
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.exe
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.deps.json
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.runtimeconfig.json
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
-D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
 D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
@@ -97,5 +92,9 @@ D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComple
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.dll
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect.dll
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.deps.json
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.runtimeconfig.json
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
+D:\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll

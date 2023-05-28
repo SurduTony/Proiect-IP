@@ -15,6 +15,7 @@ namespace proiect
 {
     public partial class RestaurantsForm : Form
     {
+        public static int roomID = -1;
         public static int restaurantID = -1;
         public enum Modes { NEW_RESTAURANT, MODIFY };
         public int modeRestaurant = 0;
@@ -51,7 +52,6 @@ namespace proiect
                     if (conn.State == ConnectionState.Open)
                         conn.Close();
                     conn.Open();
-
                     buttonNewRestaurant.BackColor = Color.LawnGreen;
                     SqlCommand cmd = conn.CreateCommand();
                     cmd.CommandText = "select * from Oras";
@@ -167,11 +167,13 @@ namespace proiect
             groupBoxTables.Enabled = false;
             dataGridViewRooms.Enabled = false;
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
+            cmd.CommandText = "SELECT s.IdSala, s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
             SqlDataAdapter da1 = new SqlDataAdapter(cmd);
             dt1 = new DataTable();
             da1.Fill(dt1);
             dataGridViewRooms.DataSource = dt1;
+            dataGridViewRooms.Columns[0].Visible = false;
+
 
 
             cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", r.Meniu,o.Nume AS City FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
@@ -186,6 +188,7 @@ namespace proiect
 
         private void buttonNewRoom_Click(object sender, EventArgs e)
         {
+            modeRoom = (int)Modes.NEW_RESTAURANT;
             textBoxFacilities.Text = "";
             textBoxTables.Text = "";
             buttonNewRoom.BackColor = Color.LawnGreen;
@@ -211,13 +214,36 @@ namespace proiect
                         cmd1.ExecuteNonQuery();
                         RestaurantsForm_Shown(sender, EventArgs.Empty);
                         MessageBox.Show("Room added succesfully!");
+                        groupBoxTables.Enabled = true;
+                        dataGridViewRooms.Enabled = true;
                     }
                     catch (Exception ex) { MessageBox.Show(ex.Message); }
                 }
             }
             else
             {
-                //TODO
+                try
+                {
+                    if (conn.State == ConnectionState.Open)
+                        conn.Close();
+                    conn.Open();
+
+                   
+                    SqlCommand cmd1 = conn.CreateCommand();
+                    cmd1.CommandText = "UPDATE Sala SET Mese = @Mese, Facilitati = @Facilitati WHERE IdRestaurant = @IdRestaurant and IdSala = @IdSala";
+                    cmd1.Parameters.AddWithValue("@Mese", textBoxTables.Text);
+                    cmd1.Parameters.AddWithValue("@Facilitati", textBoxFacilities.Text);
+                    cmd1.Parameters.AddWithValue("@IdRestaurant", restaurantID);
+                    cmd1.Parameters.AddWithValue("@IdSala", roomID);
+
+                    cmd1.ExecuteNonQuery();
+                    RestaurantsForm_Shown(sender, EventArgs.Empty);
+                    MessageBox.Show("Restaurant modified succesfully!");
+                    groupBoxTables.Enabled = true;
+                    dataGridViewRooms.Enabled = true;
+
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
         }
 
@@ -230,6 +256,7 @@ namespace proiect
 
         private void buttonModifyRoom_Click(object sender, EventArgs e)
         {
+
             modeRoom = (int)Modes.MODIFY;
             buttonModifyRoom.BackColor = Color.LawnGreen;
             buttonNewRoom.BackColor = SystemColors.Control;
@@ -245,7 +272,7 @@ namespace proiect
                 {
                     int.TryParse(dataGridViewRestaurants.Rows[e.RowIndex].Cells[0].Value.ToString(), out restaurantID);
                     SqlCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "SELECT s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
+                    cmd.CommandText = "SELECT s.IdSala, s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
                     SqlDataAdapter da2 = new SqlDataAdapter(cmd);
                     DataTable dt2 = new DataTable();
                     da2.Fill(dt2);
@@ -260,6 +287,8 @@ namespace proiect
                         textBoxMenu.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[3].Value.ToString();
 
                     }
+                    cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + dataGridViewRestaurants.Rows[e.RowIndex].Cells[1].Value.ToString() + "%') and adresa like ('%" + dataGridViewRestaurants.Rows[e.RowIndex].Cells[2].Value.ToString() + "%')", conn);
+                    restaurantID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
@@ -269,7 +298,22 @@ namespace proiect
 
         private void dataGridViewRooms_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dt1.Rows.Count)
+            {
 
+                try
+                {
+                    int.TryParse(dataGridViewRooms.Rows[e.RowIndex].Cells[0].Value.ToString(), out roomID);
+                    
+                    if (modeRoom == (int)Modes.MODIFY)
+                    {
+                        textBoxTables.Text = dataGridViewRooms.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        textBoxFacilities.Text = dataGridViewRooms.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
         }
     }
 }

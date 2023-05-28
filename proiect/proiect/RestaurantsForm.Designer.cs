@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewRestaurants = new System.Windows.Forms.DataGridView();
             this.labelName = new System.Windows.Forms.Label();
             this.labelAddress = new System.Windows.Forms.Label();
             this.labelCity = new System.Windows.Forms.Label();
@@ -40,6 +39,9 @@
             this.buttonNewRestaurant = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxRestaurant = new System.Windows.Forms.GroupBox();
+            this.dataGridViewRestaurants = new System.Windows.Forms.DataGridView();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.buttonModifyRestaurant = new System.Windows.Forms.Button();
             this.groupBoxTables = new System.Windows.Forms.GroupBox();
             this.buttonModifyRoom = new System.Windows.Forms.Button();
@@ -47,31 +49,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelTables = new System.Windows.Forms.Label();
             this.textBoxTables = new System.Windows.Forms.TextBox();
-            this.buttonAddRoom = new System.Windows.Forms.Button();
+            this.buttonSaveRoom = new System.Windows.Forms.Button();
             this.buttonNewRoom = new System.Windows.Forms.Button();
             this.dataGridViewRooms = new System.Windows.Forms.DataGridView();
-            this.labelPhone = new System.Windows.Forms.Label();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).BeginInit();
             this.groupBoxRestaurant.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).BeginInit();
             this.groupBoxTables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRooms)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridViewRestaurants
-            // 
-            this.dataGridViewRestaurants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRestaurants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridViewRestaurants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRestaurants.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridViewRestaurants.Location = new System.Drawing.Point(3, 374);
-            this.dataGridViewRestaurants.Name = "dataGridViewRestaurants";
-            this.dataGridViewRestaurants.ReadOnly = true;
-            this.dataGridViewRestaurants.RowHeadersWidth = 51;
-            this.dataGridViewRestaurants.RowTemplate.Height = 29;
-            this.dataGridViewRestaurants.Size = new System.Drawing.Size(653, 361);
-            this.dataGridViewRestaurants.TabIndex = 0;
-            this.dataGridViewRestaurants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRestaurants_CellClick);
             // 
             // labelName
             // 
@@ -165,10 +150,10 @@
             // 
             // groupBoxRestaurant
             // 
+            this.groupBoxRestaurant.Controls.Add(this.dataGridViewRestaurants);
             this.groupBoxRestaurant.Controls.Add(this.labelPhone);
             this.groupBoxRestaurant.Controls.Add(this.textBoxPhone);
             this.groupBoxRestaurant.Controls.Add(this.buttonModifyRestaurant);
-            this.groupBoxRestaurant.Controls.Add(this.dataGridViewRestaurants);
             this.groupBoxRestaurant.Controls.Add(this.buttonSave);
             this.groupBoxRestaurant.Controls.Add(this.labelName);
             this.groupBoxRestaurant.Controls.Add(this.buttonNewRestaurant);
@@ -182,9 +167,41 @@
             this.groupBoxRestaurant.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxRestaurant.Location = new System.Drawing.Point(0, 0);
             this.groupBoxRestaurant.Name = "groupBoxRestaurant";
-            this.groupBoxRestaurant.Size = new System.Drawing.Size(659, 738);
+            this.groupBoxRestaurant.Size = new System.Drawing.Size(656, 738);
             this.groupBoxRestaurant.TabIndex = 11;
             this.groupBoxRestaurant.TabStop = false;
+            // 
+            // dataGridViewRestaurants
+            // 
+            this.dataGridViewRestaurants.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewRestaurants.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridViewRestaurants.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRestaurants.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewRestaurants.Location = new System.Drawing.Point(3, 374);
+            this.dataGridViewRestaurants.Name = "dataGridViewRestaurants";
+            this.dataGridViewRestaurants.ReadOnly = true;
+            this.dataGridViewRestaurants.RowHeadersWidth = 51;
+            this.dataGridViewRestaurants.RowTemplate.Height = 29;
+            this.dataGridViewRestaurants.Size = new System.Drawing.Size(650, 361);
+            this.dataGridViewRestaurants.TabIndex = 14;
+            this.dataGridViewRestaurants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRestaurants_CellClick);
+            // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(11, 332);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(53, 20);
+            this.labelPhone.TabIndex = 12;
+            this.labelPhone.Text = "Phone:";
+            this.labelPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(82, 332);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(384, 27);
+            this.textBoxPhone.TabIndex = 13;
             // 
             // buttonModifyRestaurant
             // 
@@ -203,10 +220,10 @@
             this.groupBoxTables.Controls.Add(this.label2);
             this.groupBoxTables.Controls.Add(this.labelTables);
             this.groupBoxTables.Controls.Add(this.textBoxTables);
-            this.groupBoxTables.Controls.Add(this.buttonAddRoom);
+            this.groupBoxTables.Controls.Add(this.buttonSaveRoom);
             this.groupBoxTables.Controls.Add(this.buttonNewRoom);
             this.groupBoxTables.Controls.Add(this.dataGridViewRooms);
-            this.groupBoxTables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxTables.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBoxTables.Location = new System.Drawing.Point(659, 0);
             this.groupBoxTables.Name = "groupBoxTables";
             this.groupBoxTables.Size = new System.Drawing.Size(601, 738);
@@ -258,15 +275,15 @@
             this.textBoxTables.Size = new System.Drawing.Size(86, 27);
             this.textBoxTables.TabIndex = 14;
             // 
-            // buttonAddRoom
+            // buttonSaveRoom
             // 
-            this.buttonAddRoom.Location = new System.Drawing.Point(450, 253);
-            this.buttonAddRoom.Name = "buttonAddRoom";
-            this.buttonAddRoom.Size = new System.Drawing.Size(141, 51);
-            this.buttonAddRoom.TabIndex = 12;
-            this.buttonAddRoom.Text = "Add Room";
-            this.buttonAddRoom.UseVisualStyleBackColor = true;
-            this.buttonAddRoom.Click += new System.EventHandler(this.buttonAddRoom_Click);
+            this.buttonSaveRoom.Location = new System.Drawing.Point(448, 308);
+            this.buttonSaveRoom.Name = "buttonSaveRoom";
+            this.buttonSaveRoom.Size = new System.Drawing.Size(141, 51);
+            this.buttonSaveRoom.TabIndex = 12;
+            this.buttonSaveRoom.Text = "Save";
+            this.buttonSaveRoom.UseVisualStyleBackColor = true;
+            this.buttonSaveRoom.Click += new System.EventHandler(this.buttonAddRoom_Click);
             // 
             // buttonNewRoom
             // 
@@ -280,31 +297,18 @@
             // 
             // dataGridViewRooms
             // 
+            this.dataGridViewRooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewRooms.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridViewRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRooms.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridViewRooms.Location = new System.Drawing.Point(3, 374);
             this.dataGridViewRooms.Name = "dataGridViewRooms";
+            this.dataGridViewRooms.ReadOnly = true;
             this.dataGridViewRooms.RowHeadersWidth = 51;
             this.dataGridViewRooms.RowTemplate.Height = 29;
             this.dataGridViewRooms.Size = new System.Drawing.Size(595, 361);
             this.dataGridViewRooms.TabIndex = 0;
             this.dataGridViewRooms.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRooms_CellClick);
-            // 
-            // labelPhone
-            // 
-            this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(11, 332);
-            this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(53, 20);
-            this.labelPhone.TabIndex = 12;
-            this.labelPhone.Text = "Phone:";
-            this.labelPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Location = new System.Drawing.Point(82, 332);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(384, 27);
-            this.textBoxPhone.TabIndex = 13;
             // 
             // RestaurantsForm
             // 
@@ -318,9 +322,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RestaurantsForm_FormClosing);
             this.Load += new System.EventHandler(this.RestaurantsForm_Load);
             this.Shown += new System.EventHandler(this.RestaurantsForm_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).EndInit();
             this.groupBoxRestaurant.ResumeLayout(false);
             this.groupBoxRestaurant.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRestaurants)).EndInit();
             this.groupBoxTables.ResumeLayout(false);
             this.groupBoxTables.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRooms)).EndInit();
@@ -329,8 +333,6 @@
         }
 
         #endregion
-
-        private DataGridView dataGridViewRestaurants;
         private Label labelName;
         private Label labelAddress;
         private Label labelCity;
@@ -348,11 +350,12 @@
         private Label label2;
         private Label labelTables;
         private TextBox textBoxTables;
-        private Button buttonAddRoom;
+        private Button buttonSaveRoom;
         private Button buttonNewRoom;
         private Button buttonModifyRestaurant;
         private Button buttonModifyRoom;
         private Label labelPhone;
         private TextBox textBoxPhone;
+        private DataGridView dataGridViewRestaurants;
     }
 }
