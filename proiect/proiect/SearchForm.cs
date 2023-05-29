@@ -29,11 +29,42 @@ namespace proiect
 {
     //Sacrieriu Razvan-Marcian
     public partial class SearchForm : Form
-    {   
+    {
         // Preia dinamic path ul folderului si creeaza conexiunea pentru baza de date (proiectul poate fi situat oriunde)
         public static string currentPath = Directory.GetCurrentDirectory();
         public static string newPath = currentPath.Substring(0, currentPath.IndexOf("bin"));
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + newPath + "restaurants.mdf;" + "Integrated Security = True");
+
+
+        public string City 
+        { 
+            set 
+            { 
+                comboBox1.Text = value; 
+            } 
+        }
+
+        public bool isDatabaseEmpty
+        {
+            get
+            {
+                if (dataGridView1.Rows.Count >= 2)
+                    return false;
+                return true;
+            }
+        }
+
+        public void SearchCity()
+        {
+           
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "select r.Nume as \"Restaurant Name\", r.Adresa as \"Restaurant Address\",r.Telefon AS 'Phone Number', r.Meniu from Restaurant r, Oras o where (o.IdOras = r.IdOras and o.Nume LIKE ('%" + comboBox1.Text + "%'))";
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+            dataGridView1.DataSource = dt1;
+        }
+
 
         public SearchForm()
         {
@@ -54,20 +85,14 @@ namespace proiect
             }
         }
         //Cautare dupa oras
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void buttonSearchCity_Click(object sender, EventArgs e)
         {
-
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select r.Nume as \"Restaurant Name\", r.Adresa as \"Restaurant Address\",r.Telefon AS 'Phone Number', r.Meniu from Restaurant r, Oras o where (o.IdOras = r.IdOras and o.Nume LIKE ('%" + comboBox1.Text + "%'))";
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            dataGridView1.DataSource = dt1;
+            SearchCity();
 
 
         }
         //Cautare dupa nume
-        private void buttonSearchName_Click_1(object sender, EventArgs e)
+        private void buttonSearchName_Click(object sender, EventArgs e)
         {
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT r.Nume AS \"Restaurant Name\", r.Adresa AS \"Restaurant Address\", r.Telefon AS 'Phone Number', r.Meniu " +
