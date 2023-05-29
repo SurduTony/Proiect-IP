@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**********************************
+//
+//Autor: Sacrieriu Razvan-Marcian
+//
+//Descriere:Formular ce are ca scop cautarea unui restaurant in baza de date. Astfel,
+            se poate cauta un restaurant fie dupa oras selectand din lista unul din orasele disponibile,
+            fie dupa numele restaurantului sau chiar dupa meniu. Fiecare metoda de cautare prezinta cate un
+            buton separat numite search,searchName respectiv searchMenu.
+
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +29,8 @@ namespace proiect
 {
     //Sacrieriu Razvan-Marcian
     public partial class SearchForm : Form
-    {
+    {   
+        // Preia dinamic path ul folderului si creeaza conexiunea pentru baza de date (proiectul poate fi situat oriunde)
         public static string currentPath = Directory.GetCurrentDirectory();
         public static string newPath = currentPath.Substring(0, currentPath.IndexOf("bin"));
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + newPath + "restaurants.mdf;" + "Integrated Security = True");
@@ -28,6 +40,7 @@ namespace proiect
             InitializeComponent();
         }
 
+        //Datele sunt citite din baza de date si sunt instantiate intr-un obiect de tipul DataTable pentru a fi afisate in search
         private void SearchForm_Load(object sender, EventArgs e)
         {
             SqlCommand cmd = conn.CreateCommand();
