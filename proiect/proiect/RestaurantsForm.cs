@@ -1,4 +1,18 @@
-﻿using System;
+﻿/**********************************
+//
+//Autor: Flaminzanu-Mateiuc Marian
+//
+//Descriere: Formular prin intermediul căruia se pot crea/modifica restaurante sau săli.
+            Acesta este împărțit în două secțiuni: în stânga se află restaurantele, în dreapta, sălile.
+            Ambele secțiuni au 3 butoane: New Restaurant/Room, Modify (...) și Save.
+            Când opțiunea New (...) este activată, la apăsarea butonului Save se va crea o intrare nouă în baza de date
+            Când opțiunea Modify (...) este activată, pe interfață se va încărca intrarea selectată
+                din baza de date, iar la apăsarea butonului Save se va modifica intrarea selectată.
+
+*/
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +23,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//Flaminzanu-Mateiuc Marian
 
 namespace proiect
 {
     public partial class RestaurantsForm : Form
     {
+        //Id-uri pentru restaurant, sală și oraș
         public static int roomID = -1;
         public static int restaurantID = -1;
-        public enum Modes { NEW_RESTAURANT, MODIFY };
+        public static int idOras;
+
+        public enum Modes { NEW_ENTITY, MODIFY };
+
+        //implicit, opțiunea bifată este de a crea un nou restaurant/sală
         public int modeRestaurant = 0;
         public int modeRoom = 0;
-        public static int idOras;
+
+
+        //șir de conectare la baza de date
         public static string currentPath = Directory.GetCurrentDirectory();
         public static string newPath = currentPath.Substring(0, currentPath.IndexOf("bin"));
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + newPath + "restaurants.mdf;" + "Integrated Security = True");
@@ -30,7 +50,7 @@ namespace proiect
             InitializeComponent();
 
         }
-
+        //revenire la form-ul anterior
         private void RestaurantsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form? form = MainForm.caretaker?.Undo();
@@ -44,17 +64,19 @@ namespace proiect
 
         private void RestaurantsForm_Load(object sender, EventArgs e)
         {
+
+            //verificare dacă utilizatorul este autentificat
             if (MainForm.userManager.CurrentUser != null)
             {
                 try
                 {
-                    //incarcare lista orase
                     if (conn.State == ConnectionState.Open)
                         conn.Close();
                     conn.Open();
                     buttonNewRestaurant.BackColor = Color.LawnGreen;
                     buttonNewRoom.BackColor = Color.LawnGreen;
 
+                    //încărcare listă orașe în ComboBox
                     SqlCommand cmd = conn.CreateCommand();
                     cmd.CommandText = "select * from Oras";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -65,7 +87,7 @@ namespace proiect
                         comboBoxCity.Items.Add(dt.Rows[i][1]);
                     }
 
-
+                    //populare tabel restaurante
                     cmd = conn.CreateCommand();
                     cmd.CommandText = "SELECT r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\",r.Meniu, o.Nume AS \"City\", r.Telefon AS \"Phone Number\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
                     SqlDataAdapter da1 = new SqlDataAdapter(cmd);
@@ -77,6 +99,7 @@ namespace proiect
             }
             else
             {
+                //revenire la form-ul anterior dacă utilizatorul nu este logat
                 MessageBox.Show("Please log in first!");
                 Form? form = MainForm.caretaker?.Undo();
                 if (form != null)
@@ -88,9 +111,11 @@ namespace proiect
             }
         }
 
+
         private void buttonNewRestaurant_Click(object sender, EventArgs e)
         {
-            modeRestaurant = (int)Modes.NEW_RESTAURANT;
+            //resetare câmpuri când se dorește crearea unui restaurnat nou
+            modeRestaurant = (int)Modes.NEW_ENTITY;
             textBoxAddress.Text = "";
             textBoxMenu.Text = "";
             textBoxName.Text = "";
@@ -102,17 +127,22 @@ namespace proiect
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (modeRestaurant == (int)Modes.NEW_RESTAURANT)
+            //verificare opțiune
+            if (modeRestaurant == (int)Modes.NEW_ENTITY)
             {
+                //când se crează un restaurant nou
                 try
                 {
                     if (conn.State == ConnectionState.Open)
                         conn.Close();
                     conn.Open();
 
+                    //selectare IdOras
                     SqlCommand cmd = new SqlCommand("select IdOras from Oras where nume like ('%" + comboBoxCity.Text.Trim() + "%')", conn);
                     idOras = Convert.ToInt32(cmd.ExecuteScalar());
 
+
+                    //adăugare restaurant
                     SqlCommand cmd1 = conn.CreateCommand();
                     cmd1.CommandText = "insert into Restaurant(Nume,Adresa,IdOras,Meniu,Telefon) values (@Nume,@Adresa,@IdOras,@Meniu,@Telefon)";
                     cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
@@ -122,10 +152,12 @@ namespace proiect
                     cmd1.Parameters.AddWithValue("@Telefon", textBoxPhone.Text.Trim());
                     cmd1.ExecuteNonQuery();
 
-
+                    //selectare idRestaurant creat mai sus
                     cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + textBoxName.Text.Trim() + "%') and adresa like ('%" + textBoxAddress.Text.Trim() + "%') and IdOras like ('%" + idOras + "%') and Meniu like ('%" + textBoxMenu.Text.Trim() + "%')", conn);
                     int idRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
 
+
+                    //adăugare legătură dintre administrator și restaurant
                     cmd1 = conn.CreateCommand();
                     cmd1.CommandText = "insert into Administratori_Restaurant(IdAdministrator,IdRestaurant) values (@IdAdministrator,@IdRestaurant)";
                     cmd1.Parameters.AddWithValue("@IdAdministrator", MainForm.userManager.CurrentUser.Id);
@@ -133,21 +165,27 @@ namespace proiect
                     cmd1.ExecuteNonQuery();
                     RestaurantsForm_Shown(sender, EventArgs.Empty);
                     MessageBox.Show("Restaurant added succesfully!");
+
                 } catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
             else
             {
+
+                //când se modifică un restaurant
                 try
                 {
                     if (conn.State == ConnectionState.Open)
                         conn.Close();
                     conn.Open();
 
+                    //selectare IdOras si IdRestaurant pentru restaurantul selectat
                     SqlCommand cmd = new SqlCommand("select IdOras from Oras where nume like ('%" + comboBoxCity.Text.Trim() + "%')", conn);
                     idOras = Convert.ToInt32(cmd.ExecuteScalar());
                     cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + textBoxName.Text.Trim() + "%') and adresa like ('%" + textBoxAddress.Text.Trim() + "%') and IdOras like ('%" + idOras + "%')", conn);
                     int idRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
 
+
+                    //actualizare restaurant
                     SqlCommand cmd1 = conn.CreateCommand();
                     cmd1.CommandText = "UPDATE Restaurant SET Nume = @Nume, Adresa = @Adresa, IdOras = @IdOras, Meniu = @Meniu, Telefon = @Telefon WHERE IdRestaurant = @IdRestaurant";
                     cmd1.Parameters.AddWithValue("@Nume", textBoxName.Text.Trim());
@@ -157,6 +195,7 @@ namespace proiect
                     cmd1.Parameters.AddWithValue("@IdRestaurant", idRestaurant);
                     cmd1.Parameters.AddWithValue("@Telefon", textBoxPhone.Text.Trim());
 
+                    //refresh interfață pentru a reflecta modificările
                     RestaurantsForm_Shown(sender, EventArgs.Empty);
                     cmd1.ExecuteNonQuery();
 
@@ -168,11 +207,14 @@ namespace proiect
             }
         }
 
+        //metodă folosită pentru a actualiza tabelele
         private void RestaurantsForm_Shown(object sender, EventArgs e)
         {
             groupBoxTables.Enabled = false;
             dataGridViewRooms.Enabled = false;
             SqlCommand cmd = conn.CreateCommand();
+
+            //populare tabel săli
             cmd.CommandText = "SELECT s.IdSala, s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
             SqlDataAdapter da1 = new SqlDataAdapter(cmd);
             dt1 = new DataTable();
@@ -181,7 +223,7 @@ namespace proiect
             dataGridViewRooms.Columns[0].Visible = false;
 
 
-
+            //populare tabel restaurante
             cmd.CommandText = "SELECT r.IdRestaurant as ID, r.Nume AS \"Restaurant name\", r.Adresa AS \"Restaurant address\", r.Meniu,o.Nume AS City, r.Telefon AS \"Phone Number\" FROM Restaurant r INNER JOIN Oras o ON r.IdOras = o.IdOras INNER JOIN Administratori_Restaurant ar ON r.IdRestaurant = ar.IdRestaurant INNER JOIN Administrator a ON ar.IdAdministrator = a.IdAdministrator WHERE a.IdAdministrator LIKE ('%" + MainForm.userManager.CurrentUser.Id + "%');";
             da1 = new SqlDataAdapter(cmd);
             dt1 = new DataTable();
@@ -194,7 +236,8 @@ namespace proiect
 
         private void buttonNewRoom_Click(object sender, EventArgs e)
         {
-            modeRoom = (int)Modes.NEW_RESTAURANT;
+            //resetare câmpuri când se dorește crearea unei săli noi
+            modeRoom = (int)Modes.NEW_ENTITY;
             textBoxFacilities.Text = "";
             textBoxTables.Text = "";
             buttonNewRoom.BackColor = Color.LawnGreen;
@@ -203,14 +246,18 @@ namespace proiect
 
         private void buttonAddRoom_Click(object sender, EventArgs e)
         {
-            if (modeRoom == (int)Modes.NEW_RESTAURANT)
+            //salvare sală
+            if (modeRoom == (int)Modes.NEW_ENTITY)
             {
+                //mod sală nouă
                 int.TryParse(textBoxTables.Text, out int tablesCount);
                 if (tablesCount > 0)
                 {
                     try
                     {
                         string facilities = textBoxFacilities.Text.Trim();
+
+                        //adăugare în tabelă
                         SqlCommand cmd1 = conn.CreateCommand();
                         cmd1 = conn.CreateCommand();
                         cmd1.CommandText = "insert into Sala(IdRestaurant,Mese,Facilitati) values (@IdRestaurant,@Mese,@Facilitati)";
@@ -218,6 +265,8 @@ namespace proiect
                         cmd1.Parameters.AddWithValue("@Mese", tablesCount);
                         cmd1.Parameters.AddWithValue("@Facilitati", facilities);
                         cmd1.ExecuteNonQuery();
+
+                        //refresh interfață
                         RestaurantsForm_Shown(sender, EventArgs.Empty);
                         MessageBox.Show("Room added succesfully!");
                         groupBoxTables.Enabled = true;
@@ -228,13 +277,14 @@ namespace proiect
             }
             else
             {
+                //modificare sală
                 try
                 {
                     if (conn.State == ConnectionState.Open)
                         conn.Close();
                     conn.Open();
 
-                   
+                   //actualizare informații
                     SqlCommand cmd1 = conn.CreateCommand();
                     cmd1.CommandText = "UPDATE Sala SET Mese = @Mese, Facilitati = @Facilitati WHERE IdRestaurant = @IdRestaurant and IdSala = @IdSala";
                     cmd1.Parameters.AddWithValue("@Mese", textBoxTables.Text);
@@ -243,6 +293,8 @@ namespace proiect
                     cmd1.Parameters.AddWithValue("@IdSala", roomID);
 
                     cmd1.ExecuteNonQuery();
+
+                    //refresh interfață
                     RestaurantsForm_Shown(sender, EventArgs.Empty);
                     MessageBox.Show("Restaurant modified succesfully!");
                     groupBoxTables.Enabled = true;
@@ -255,6 +307,7 @@ namespace proiect
 
         private void buttonModifyRestaurant_Click(object sender, EventArgs e)
         {
+            //selectare mod modificare restaurant
             modeRestaurant = (int)Modes.MODIFY;
             buttonModifyRestaurant.BackColor = Color.LawnGreen;
             buttonNewRestaurant.BackColor = SystemColors.Control;
@@ -262,7 +315,7 @@ namespace proiect
 
         private void buttonModifyRoom_Click(object sender, EventArgs e)
         {
-
+            //selectare mod modificare sală
             modeRoom = (int)Modes.MODIFY;
             buttonModifyRoom.BackColor = Color.LawnGreen;
             buttonNewRoom.BackColor = SystemColors.Control;
@@ -270,12 +323,15 @@ namespace proiect
 
         private void dataGridViewRestaurants_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //selectarea unui restaurant din tabel
+
             groupBoxTables.Visible = true;
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dt1.Rows.Count)
             {
 
                 try
                 {
+                    //populare câmpuri de pe interfață
                     int.TryParse(dataGridViewRestaurants.Rows[e.RowIndex].Cells[0].Value.ToString(), out restaurantID);
                     SqlCommand cmd = conn.CreateCommand();
                     cmd.CommandText = "SELECT s.IdSala, s.Mese, s.Facilitati from Sala s, Restaurant r WHERE r.IdRestaurant LIKE ('%" + restaurantID + "%') and r.IdRestaurant = s.IdRestaurant;";
@@ -305,6 +361,7 @@ namespace proiect
 
         private void dataGridViewRooms_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //selectarea unei săli din tabel
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.RowIndex < dt1.Rows.Count)
             {
 
@@ -314,6 +371,7 @@ namespace proiect
                     
                     if (modeRoom == (int)Modes.MODIFY)
                     {
+                        //populare câmpuri de pe interfață
                         textBoxTables.Text = dataGridViewRooms.Rows[e.RowIndex].Cells[1].Value.ToString();
                         textBoxFacilities.Text = dataGridViewRooms.Rows[e.RowIndex].Cells[2].Value.ToString();
 
