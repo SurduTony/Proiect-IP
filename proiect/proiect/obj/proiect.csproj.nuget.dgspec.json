@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {}
+    "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {}
   },
   "projects": {
-    "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
+    "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+        "projectUniqueName": "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
         "projectName": "proiect",
-        "projectPath": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Proiect-IP\\proiect\\proiect\\obj\\",
+        "projectPath": "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\proiect.csproj",
+        "packagesPath": "C:\\Users\\Surdu Tony\\.nuget\\packages\\",
+        "outputPath": "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Surdu Tony\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

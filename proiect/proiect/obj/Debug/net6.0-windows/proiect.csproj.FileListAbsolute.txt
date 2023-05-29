@@ -100,3 +100,34 @@ D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect.dll
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
 D:\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.exe
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.deps.json
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.runtimeconfig.json
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\proiect.pdb
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\User.dll
+D:\git repositories\Proiect-IP\proiect\proiect\bin\Debug\net6.0-windows\UserManager.dll
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.AssemblyReference.cache
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AddAccountForm.resources
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.LoginForm.resources
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.MainForm.resources
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.RestaurantsForm.resources
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.SearchForm.resources
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.UserOptionsForm.resources
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.GenerateResource.cache
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.GeneratedMSBuildEditorConfig.editorconfig
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfoInputs.cache
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.AssemblyInfo.cs
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CoreCompileInputs.cache
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.csproj.CopyComplete
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.dll
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\refint\proiect.dll
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.pdb
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\proiect.genruntimeconfig.cache
+D:\git repositories\Proiect-IP\proiect\proiect\obj\Debug\net6.0-windows\ref\proiect.dll

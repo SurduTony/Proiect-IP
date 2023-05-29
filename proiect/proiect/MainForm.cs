@@ -19,7 +19,7 @@ namespace proiect
 
         public MainForm()
         {
-            
+
             InitializeComponent();
         }
 
@@ -66,7 +66,7 @@ namespace proiect
             }
         }
 
-        
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -112,7 +112,8 @@ namespace proiect
                     }
 
                 }
-            }catch (Exception ex) { }
+            }
+            catch (Exception ex) { }
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
@@ -123,6 +124,11 @@ namespace proiect
             this.Hide();
             this.Show();
 
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "help.chm");
         }
     }
 }

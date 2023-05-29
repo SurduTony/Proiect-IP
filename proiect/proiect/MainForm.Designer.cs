@@ -28,80 +28,91 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonLogIn = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.buttonAccount = new System.Windows.Forms.Button();
-            this.labelUser = new System.Windows.Forms.Label();
-            this.buttonLogOut = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            buttonLogIn = new Button();
+            buttonSearch = new Button();
+            buttonAccount = new Button();
+            labelUser = new Label();
+            buttonLogOut = new Button();
+            buttonHelp = new Button();
+            SuspendLayout();
             // 
             // buttonLogIn
             // 
-            this.buttonLogIn.Location = new System.Drawing.Point(83, 274);
-            this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(157, 55);
-            this.buttonLogIn.TabIndex = 4;
-            this.buttonLogIn.Text = "Log in";
-            this.buttonLogIn.UseVisualStyleBackColor = true;
-            this.buttonLogIn.Click += new System.EventHandler(this.buttonLogIn_Click);
+            buttonLogIn.Location = new Point(83, 274);
+            buttonLogIn.Name = "buttonLogIn";
+            buttonLogIn.Size = new Size(157, 69);
+            buttonLogIn.TabIndex = 4;
+            buttonLogIn.Text = "Log in";
+            buttonLogIn.UseVisualStyleBackColor = true;
+            buttonLogIn.Click += buttonLogIn_Click;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(293, 274);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(156, 69);
-            this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.button2_Click);
+            buttonSearch.Location = new Point(293, 274);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(156, 69);
+            buttonSearch.TabIndex = 2;
+            buttonSearch.Text = "Search";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += button2_Click;
             // 
             // buttonAccount
             // 
-            this.buttonAccount.Location = new System.Drawing.Point(492, 274);
-            this.buttonAccount.Name = "buttonAccount";
-            this.buttonAccount.Size = new System.Drawing.Size(157, 69);
-            this.buttonAccount.TabIndex = 3;
-            this.buttonAccount.Text = "Add/Create Account\r\nor\r\nManage Restaurants";
-            this.buttonAccount.UseVisualStyleBackColor = true;
-            this.buttonAccount.Click += new System.EventHandler(this.buttonAccount_Click);
+            buttonAccount.Location = new Point(492, 274);
+            buttonAccount.Name = "buttonAccount";
+            buttonAccount.Size = new Size(157, 69);
+            buttonAccount.TabIndex = 3;
+            buttonAccount.Text = "Add/Create Account\r\nor\r\nManage Restaurants";
+            buttonAccount.UseVisualStyleBackColor = true;
+            buttonAccount.Click += buttonAccount_Click;
             // 
             // labelUser
             // 
-            this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(12, 9);
-            this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(472, 20);
-            this.labelUser.TabIndex = 6;
-            this.labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
+            labelUser.AutoSize = true;
+            labelUser.Location = new Point(12, 9);
+            labelUser.Name = "labelUser";
+            labelUser.Size = new Size(472, 20);
+            labelUser.TabIndex = 6;
+            labelUser.Text = "You are not logged in. Please log in to be able to act as administrator!";
             // 
             // buttonLogOut
             // 
-            this.buttonLogOut.Location = new System.Drawing.Point(83, 274);
-            this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(157, 69);
-            this.buttonLogOut.TabIndex = 1;
-            this.buttonLogOut.Text = "Log out";
-            this.buttonLogOut.UseVisualStyleBackColor = true;
-            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
+            buttonLogOut.Location = new Point(83, 274);
+            buttonLogOut.Name = "buttonLogOut";
+            buttonLogOut.Size = new Size(157, 69);
+            buttonLogOut.TabIndex = 1;
+            buttonLogOut.Text = "Log out";
+            buttonLogOut.UseVisualStyleBackColor = true;
+            buttonLogOut.Click += buttonLogOut_Click;
+            // 
+            // buttonHelp
+            // 
+            buttonHelp.Location = new Point(664, 388);
+            buttonHelp.Name = "buttonHelp";
+            buttonHelp.Size = new Size(111, 32);
+            buttonHelp.TabIndex = 7;
+            buttonHelp.Text = "Help";
+            buttonHelp.UseVisualStyleBackColor = true;
+            buttonHelp.Click += buttonHelp_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonLogOut);
-            this.Controls.Add(this.labelUser);
-            this.Controls.Add(this.buttonAccount);
-            this.Controls.Add(this.buttonLogIn);
-            this.Controls.Add(this.buttonSearch);
-            this.Name = "MainForm";
-            this.Text = "MainForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(buttonHelp);
+            Controls.Add(buttonLogOut);
+            Controls.Add(labelUser);
+            Controls.Add(buttonAccount);
+            Controls.Add(buttonLogIn);
+            Controls.Add(buttonSearch);
+            Name = "MainForm";
+            Text = "MainForm";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
+            VisibleChanged += MainForm_VisibleChanged;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -111,5 +122,6 @@
         private Button buttonAccount;
         private Label labelUser;
         private Button buttonLogOut;
+        private Button buttonHelp;
     }
 }

@@ -6790,19 +6790,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\Surdu Tony\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proiect-IP\\proiect\\LoginTest\\TestingProject.csproj",
+      "projectUniqueName": "D:\\git repositories\\Proiect-IP\\proiect\\LoginTest\\TestingProject.csproj",
       "projectName": "TestingProject",
-      "projectPath": "D:\\Proiect-IP\\proiect\\LoginTest\\TestingProject.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Proiect-IP\\proiect\\LoginTest\\obj\\",
+      "projectPath": "D:\\git repositories\\Proiect-IP\\proiect\\LoginTest\\TestingProject.csproj",
+      "packagesPath": "C:\\Users\\Surdu Tony\\.nuget\\packages\\",
+      "outputPath": "D:\\git repositories\\Proiect-IP\\proiect\\LoginTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Surdu Tony\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6816,8 +6821,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
-              "projectPath": "D:\\Proiect-IP\\proiect\\proiect\\proiect.csproj"
+            "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\proiect.csproj": {
+              "projectPath": "D:\\git repositories\\Proiect-IP\\proiect\\proiect\\proiect.csproj"
             }
           }
         }
