@@ -119,7 +119,7 @@ namespace TestingProject
         public void SearchTest_SearchRestaurantsInNotExistingMenu()
         {
             var searchForm = new SearchForm();
-            searchForm.Name = "Salam";
+            searchForm.Menu = "Salam";
 
             searchForm.SearchCityMenu();
             //testul trece deoarece nu exista restaurant cu elementul salam in lista de meniu
