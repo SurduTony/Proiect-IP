@@ -35,14 +35,7 @@ namespace proiect
         public static string newPath = currentPath.Substring(0, currentPath.IndexOf("bin"));
         SqlConnection conn = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + newPath + "restaurants.mdf;" + "Integrated Security = True");
 
-
-        public string City 
-        { 
-            set 
-            { 
-                comboBox1.Text = value; 
-            } 
-        }
+        
 
         public bool isDatabaseEmpty
         {
@@ -53,7 +46,14 @@ namespace proiect
                 return true;
             }
         }
-
+        //Pentru test la oras
+        public string City
+        {
+            set
+            {
+                comboBox1.Text = value;
+            }
+        }
         public void SearchCity()
         {
            
@@ -65,7 +65,61 @@ namespace proiect
             dataGridView1.DataSource = dt1;
         }
 
+        //Test pentru campul nume
+        public string Name
+        {
+            get 
+            {
+                return textBoxName.Text.Trim();
 
+            }
+            set
+            {
+                textBoxName.Text = value;
+            }
+        }
+        public void SearchCityName()
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT r.Nume AS \"Restaurant Name\", r.Adresa AS \"Restaurant Address\", r.Telefon AS 'Phone Number', r.Meniu " +
+                              "FROM Restaurant r " +
+                              "INNER JOIN Oras o ON r.IdOras = o.IdOras " +
+                              "WHERE r.Nume LIKE @NameQuery";
+
+            cmd.Parameters.AddWithValue("@NameQuery", "%" + textBoxName.Text + "%");
+
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+            dataGridView1.DataSource = dt1;
+        }
+        //Test pentru campul menu
+        public string Menu
+        {
+            get
+            {
+                return textBoxMenu.Text.Trim();
+
+            }
+            set
+            {
+                textBoxMenu.Text = value;
+            }
+        }
+        public void SearchCityMenu() {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT r.Nume AS \"Restaurant Name\", r.Adresa AS \"Restaurant Address\", r.Telefon AS 'Phone Number', r.Meniu " +
+                              "FROM Restaurant r " +
+                              "INNER JOIN Oras o ON r.IdOras = o.IdOras " +
+                              "WHERE r.Meniu LIKE @MenuQuery";
+
+            cmd.Parameters.AddWithValue("@MenuQuery", "%" + textBoxMenu.Text + "%");
+
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+            dataGridView1.DataSource = dt1;
+        }
         public SearchForm()
         {
             InitializeComponent();
@@ -74,6 +128,8 @@ namespace proiect
         //Datele sunt citite din baza de date si sunt instantiate intr-un obiect de tipul DataTable pentru a fi afisate in search
         private void SearchForm_Load(object sender, EventArgs e)
         {
+            textBoxName.Text = "";
+            textBoxMenu.Text = "";
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "select * from Oras";
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -94,34 +150,12 @@ namespace proiect
         //Cautare dupa nume
         private void buttonSearchName_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT r.Nume AS \"Restaurant Name\", r.Adresa AS \"Restaurant Address\", r.Telefon AS 'Phone Number', r.Meniu " +
-                              "FROM Restaurant r " +
-                              "INNER JOIN Oras o ON r.IdOras = o.IdOras " +
-                              "WHERE r.Nume LIKE @NameQuery";
-
-            cmd.Parameters.AddWithValue("@NameQuery", "%" + textBoxName.Text + "%");
-
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            dataGridView1.DataSource = dt1;
+            SearchCityName();
         }
         //Cautare dupa meniu
         private void buttonSearchMenu_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT r.Nume AS \"Restaurant Name\", r.Adresa AS \"Restaurant Address\", r.Telefon AS 'Phone Number', r.Meniu " +
-                              "FROM Restaurant r " +
-                              "INNER JOIN Oras o ON r.IdOras = o.IdOras " +
-                              "WHERE r.Meniu LIKE @MenuQuery";
-
-            cmd.Parameters.AddWithValue("@MenuQuery", "%" + textBoxMenu.Text + "%");
-
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            DataTable dt1 = new DataTable();
-            da1.Fill(dt1);
-            dataGridView1.DataSource = dt1;
+            SearchCityMenu();
         }
 
         //Inchidere form de cautare

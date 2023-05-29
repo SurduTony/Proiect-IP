@@ -41,7 +41,7 @@ namespace TestingProject
         }
     }
 
-
+    //Sacrieriu Razvan-Marcian
     [TestClass]
     public class SearchTest
     {
@@ -68,6 +68,61 @@ namespace TestingProject
 
             searchForm.SearchCity();
             //testul trece deoarece nu exista acest oras
+
+            Assert.IsTrue(searchForm.isDatabaseEmpty);
+
+        }
+        [TestMethod]
+
+        public void SearchTest_SearchRestaurantsInExistingName()
+        {
+            var searchForm = new SearchForm();
+            searchForm.Name = "Oscar";
+
+            searchForm.SearchCityName();
+            //testul trece deoarece  exista acest restaurant in lista de nume
+
+            Assert.IsFalse(searchForm.isDatabaseEmpty);
+
+        }
+
+        [TestMethod]
+
+        public void SearchTest_SearchRestaurantsInNotExistingName()
+        {
+            var searchForm = new SearchForm();
+            searchForm.Name = "Carlos";
+
+            searchForm.SearchCityName();
+            //testul trece deoarece nu exista acest restaurant in lista de nume
+
+            Assert.IsTrue(searchForm.isDatabaseEmpty);
+
+        }
+        [TestMethod]
+
+        public void SearchTest_SearchRestaurantsInExistingMenu()
+        {
+            var searchForm = new SearchForm();
+            searchForm.Menu = "Pizza";
+
+            searchForm.SearchCityMenu();
+            //testul trece deoarece exista restaurant cu elementul pizza in lista de meniu
+
+
+            Assert.IsFalse(searchForm.isDatabaseEmpty);
+
+        }
+
+        [TestMethod]
+
+        public void SearchTest_SearchRestaurantsInNotExistingMenu()
+        {
+            var searchForm = new SearchForm();
+            searchForm.Name = "Salam";
+
+            searchForm.SearchCityMenu();
+            //testul trece deoarece nu exista restaurant cu elementul salam in lista de meniu
 
             Assert.IsTrue(searchForm.isDatabaseEmpty);
 
