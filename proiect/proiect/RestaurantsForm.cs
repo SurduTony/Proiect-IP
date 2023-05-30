@@ -181,8 +181,6 @@ namespace proiect
                     //selectare IdOras si IdRestaurant pentru restaurantul selectat
                     SqlCommand cmd = new SqlCommand("select IdOras from Oras where nume like ('%" + comboBoxCity.Text.Trim() + "%')", conn);
                     idOras = Convert.ToInt32(cmd.ExecuteScalar());
-                    cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + textBoxName.Text.Trim() + "%') and adresa like ('%" + textBoxAddress.Text.Trim() + "%') and IdOras like ('%" + idOras + "%')", conn);
-                    int idRestaurant = Convert.ToInt32(cmd.ExecuteScalar());
 
 
                     //actualizare restaurant
@@ -192,7 +190,7 @@ namespace proiect
                     cmd1.Parameters.AddWithValue("@Adresa", textBoxAddress.Text.Trim());
                     cmd1.Parameters.AddWithValue("@IdOras", idOras);
                     cmd1.Parameters.AddWithValue("@Meniu", textBoxMenu.Text.Trim());
-                    cmd1.Parameters.AddWithValue("@IdRestaurant", idRestaurant);
+                    cmd1.Parameters.AddWithValue("@IdRestaurant", restaurantID);
                     cmd1.Parameters.AddWithValue("@Telefon", textBoxPhone.Text.Trim());
 
                     //refresh interfață pentru a reflecta modificările
@@ -331,6 +329,7 @@ namespace proiect
 
                 try
                 {
+
                     //populare câmpuri de pe interfață
                     int.TryParse(dataGridViewRestaurants.Rows[e.RowIndex].Cells[0].Value.ToString(), out restaurantID);
                     SqlCommand cmd = conn.CreateCommand();
@@ -350,8 +349,6 @@ namespace proiect
                         textBoxPhone.Text = dataGridViewRestaurants.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                     }
-                    cmd = new SqlCommand("select IdRestaurant from Restaurant where nume like ('%" + dataGridViewRestaurants.Rows[e.RowIndex].Cells[1].Value.ToString() + "%') and adresa like ('%" + dataGridViewRestaurants.Rows[e.RowIndex].Cells[2].Value.ToString() + "%')", conn);
-                    restaurantID = Convert.ToInt32(cmd.ExecuteScalar());
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }

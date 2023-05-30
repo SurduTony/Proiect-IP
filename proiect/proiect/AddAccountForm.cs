@@ -32,7 +32,7 @@ namespace proiect
             {
                 //Verificare existență user
 
-                if (MainForm.userManager.userExists(textBoxName.Text, textBoxPassword.Text) == false)
+                if (MainForm.userManager != null && MainForm.userManager.userExists(textBoxName.Text, textBoxPassword.Text) == false )
                 {
                     try
                     {
